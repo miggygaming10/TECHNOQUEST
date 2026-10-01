@@ -1,0 +1,2498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>TechnoQuest</title>
+
+    <!-- CONNECT CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     TOP BAR
+========================================= -->
+
+<header class="topbar">
+
+    <div class="logo">
+        TECHNOQUEST
+    </div>
+
+
+    <div class="levelBox">
+
+        <strong id="levelText">
+            LEVEL 1
+        </strong>
+
+        <span id="xpText">
+            XP 0 / 100
+        </span>
+
+    </div>
+
+
+    <div class="xpBar">
+
+        <span id="xpProgress"></span>
+
+    </div>
+
+
+    <div class="chapter">
+        TECHNOCORE
+    </div>
+
+</header>
+
+
+
+<main>
+
+
+<!-- =========================================
+     HOME
+========================================= -->
+
+<section id="home"
+         class="screen active homeScreen">
+
+    <div class="homeContent">
+
+        <div class="homeSubtitle">
+            GAME-BASED LEARNING WEBSITE
+        </div>
+
+
+        <h1 class="mainTitle">
+            TECHNOQUEST
+        </h1>
+
+
+        <p class="homeDescription">
+
+            Learn through challenges, defeat subject bosses,
+            earn XP, and become a TechnoQuest Master.
+
+        </p>
+
+
+        <div class="chapterBox">
+            TECHNOCORE BATTLE MODE
+        </div>
+
+
+        <br><br>
+
+
+        <button class="primaryButton"
+                data-go="subjects">
+
+            START QUEST ▶
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     SUBJECT SELECT
+========================================= -->
+
+<section id="subjects"
+         class="screen">
+
+    <div class="pageTitle">
+
+        <h1>
+            SELECT YOUR SUBJECT
+        </h1>
+
+        <p>
+            Choose your learning adventure.
+        </p>
+
+    </div>
+
+
+    <div class="subjectGrid">
+
+
+        <!-- MATH -->
+
+        <button class="subjectCard mathCard"
+                data-subject="math">
+
+            <div class="subjectIcon">
+                ➗
+            </div>
+
+            <h2>
+                MATH QUEST
+            </h2>
+
+            <p>
+                Solve equations, numbers,
+                patterns, and mathematical challenges.
+            </p>
+
+            <span>
+                SELECT ▶
+            </span>
+
+        </button>
+
+
+
+        <!-- SCIENCE -->
+
+        <button class="subjectCard scienceCard"
+                data-subject="science">
+
+            <div class="subjectIcon">
+                🔬
+            </div>
+
+            <h2>
+                SCIENCE QUEST
+            </h2>
+
+            <p>
+                Explore biology, physics,
+                chemistry, and scientific facts.
+            </p>
+
+            <span>
+                SELECT ▶
+            </span>
+
+        </button>
+
+
+
+        <!-- HISTORY -->
+
+        <button class="subjectCard historyCard"
+                data-subject="history">
+
+            <div class="subjectIcon">
+                🇵🇭
+            </div>
+
+            <h2>
+                PHILIPPINE HISTORY
+            </h2>
+
+            <p>
+                Explore important people,
+                events, and dates in Philippine history.
+            </p>
+
+            <span>
+                SELECT ▶
+            </span>
+
+        </button>
+
+
+
+        <!-- ENGLISH -->
+
+        <button class="subjectCard englishCard"
+                data-subject="english">
+
+            <div class="subjectIcon">
+                📚
+            </div>
+
+            <h2>
+                ENGLISH QUEST
+            </h2>
+
+            <p>
+                Test grammar, vocabulary,
+                sentence structure, and language skills.
+            </p>
+
+            <span>
+                SELECT ▶
+            </span>
+
+        </button>
+
+
+    </div>
+
+
+    <div class="bottomButtons">
+
+        <button class="secondaryButton"
+                data-go="home">
+
+            ◀ HOME
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     DIFFICULTY SELECT
+========================================= -->
+
+<section id="difficulty"
+         class="screen">
+
+    <div class="pageTitle">
+
+        <h1 id="difficultyTitle">
+            SELECT DIFFICULTY
+        </h1>
+
+        <p>
+            Choose how powerful the boss will be.
+        </p>
+
+    </div>
+
+
+    <!-- UNIQUE GAME MODE -->
+
+    <div class="technoCoreInfo">
+
+        <div class="coreIcon">
+            ⚡
+        </div>
+
+        <div>
+
+            <h2>
+                TECHNOCORE BATTLE
+            </h2>
+
+            <p>
+
+                Build your combo by answering correctly.
+                Every correct answer damages the boss by
+                <strong>20 HP</strong>.
+
+                Every 3 consecutive correct answers
+                activates <strong>CORE SYNC</strong>,
+                giving you a hint on the next question.
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="difficultyGrid">
+
+
+        <!-- EASY -->
+
+        <button class="difficultyCard easy"
+                data-difficulty="easy">
+
+            <div class="difficultyIcon">
+                🟢
+            </div>
+
+            <h2>
+                EASY
+            </h2>
+
+            <p>
+                Boss HP
+            </p>
+
+            <strong>
+                100 HP
+            </strong>
+
+            <small>
+                5 hits required
+            </small>
+
+        </button>
+
+
+
+        <!-- MEDIUM -->
+
+        <button class="difficultyCard medium"
+                data-difficulty="medium">
+
+            <div class="difficultyIcon">
+                🟡
+            </div>
+
+            <h2>
+                MEDIUM
+            </h2>
+
+            <p>
+                Boss HP
+            </p>
+
+            <strong>
+                200 HP
+            </strong>
+
+            <small>
+                10 hits required
+            </small>
+
+        </button>
+
+
+
+        <!-- HARD -->
+
+        <button class="difficultyCard hard"
+                data-difficulty="hard">
+
+            <div class="difficultyIcon">
+                🔴
+            </div>
+
+            <h2>
+                HARD
+            </h2>
+
+            <p>
+                Boss HP
+            </p>
+
+            <strong>
+                300 HP
+            </strong>
+
+            <small>
+                15 hits required
+            </small>
+
+        </button>
+
+
+    </div>
+
+
+    <div class="bottomButtons">
+
+        <button class="secondaryButton"
+                data-go="subjects">
+
+            ◀ SUBJECTS
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     BOSS BATTLE
+========================================= -->
+
+<section id="battle"
+         class="screen">
+
+    <div class="battlePanel">
+
+
+        <!-- BATTLE TOP -->
+
+        <div class="battleTop">
+
+            <button class="smallButton"
+                    data-go="difficulty">
+
+                ◀ BACK
+
+            </button>
+
+
+            <div class="battleMode">
+                ⚡ TECHNOCORE BATTLE
+            </div>
+
+
+            <div class="comboDisplay">
+
+                COMBO:
+                <strong id="combo">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- BOSS -->
+
+        <div id="bossArea"
+             class="bossArea">
+
+            <div class="bossTheme"
+                 id="bossIcon">
+
+                👹
+
+            </div>
+
+
+            <h1 id="bossName">
+                BOSS
+            </h1>
+
+
+            <p id="bossSubject">
+                SUBJECT BOSS
+            </p>
+
+
+
+            <!-- BOSS HP -->
+
+            <div class="bossHpText">
+
+                BOSS HP:
+
+                <strong id="bossHpText">
+                    100
+                </strong>
+
+                /
+
+                <span id="bossMaxHp">
+                    100
+                </span>
+
+            </div>
+
+
+            <div class="bossHpBar">
+
+                <span id="bossHpBar"></span>
+
+            </div>
+
+
+            <!-- CORE STATUS -->
+
+            <div class="coreStatus"
+                 id="coreStatus">
+
+                CORE STATUS:
+                STABLE
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PLAYER -->
+
+        <div class="playerStatus">
+
+            <div>
+
+                <span>
+                    SHIELDS
+                </span>
+
+                <strong id="shields">
+                    ❤️ ❤️ ❤️
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    DAMAGE
+                </span>
+
+                <strong>
+                    20
+                </strong>
+
+                <small>
+                    per correct answer
+                </small>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- QUESTION -->
+
+        <div class="questionNumber"
+             id="questionNumber">
+
+            QUESTION 1
+
+        </div>
+
+
+        <div class="questionBox">
+
+            <h2 id="question">
+                Question
+            </h2>
+
+            <div id="hint"
+                 class="hint hidden">
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ANSWERS -->
+
+        <div id="answers"
+             class="answerGrid">
+
+        </div>
+
+
+
+        <!-- RESULT -->
+
+        <div id="battleResult"
+             class="battleResult">
+
+        </div>
+
+
+        <!-- NEXT -->
+
+        <button id="nextButton"
+                class="primaryButton hidden">
+
+            NEXT QUESTION ▶
+
+        </button>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     MISSION SUCCESS
+========================================= -->
+
+<section id="success"
+         class="screen resultScreen">
+
+    <div class="resultPanel successPanel">
+
+        <div class="resultIcon">
+            🏆
+        </div>
+
+
+        <h1>
+            MISSION SUCCESSFUL!
+        </h1>
+
+
+        <p id="successText">
+            You defeated the boss!
+        </p>
+
+
+        <div class="finalStats">
+
+            <div>
+
+                <span>
+                    SCORE
+                </span>
+
+                <strong id="successScore">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    DAMAGE DEALT
+                </span>
+
+                <strong id="damageDealt">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    XP EARNED
+                </span>
+
+                <strong id="earnedXP">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="successMessage">
+            ⚡ BOSS CORE DESTROYED ⚡
+        </div>
+
+
+        <div class="resultButtons">
+
+            <button class="primaryButton"
+                    data-go="subjects">
+
+                CHOOSE ANOTHER SUBJECT
+
+            </button>
+
+
+            <!-- HOME BUTTON AFTER BOSS IS BEATEN -->
+
+            <button class="secondaryButton"
+                    data-go="home">
+
+                🏠 HOME
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     MISSION FAILED
+========================================= -->
+
+<section id="failed"
+         class="screen resultScreen">
+
+    <div class="resultPanel failPanel">
+
+        <div class="resultIcon">
+            💀
+        </div>
+
+
+        <h1>
+            MISSION FAILED
+        </h1>
+
+
+        <p>
+            Your shields were destroyed before
+            you could defeat the boss.
+        </p>
+
+
+        <div class="finalStats">
+
+            <div>
+
+                <span>
+                    DAMAGE DEALT
+                </span>
+
+                <strong id="failedDamage">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    SCORE
+                </span>
+
+                <strong id="failedScore">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="failMessage">
+
+            The boss remains undefeated.
+            Recharge and try again!
+
+        </div>
+
+
+        <div class="resultButtons">
+
+            <button id="retryButton"
+                    class="primaryButton">
+
+                🔄 RETRY MISSION
+
+            </button>
+
+
+            <button class="secondaryButton"
+                    data-go="subjects">
+
+                SUBJECTS
+
+            </button>
+
+
+            <button class="secondaryButton"
+                    data-go="home">
+
+                🏠 HOME
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+
+<script>
+
+
+/* ==================================================
+   QUESTION DATABASE
+================================================== */
+
+const questions = {
+
+
+    /* ==================================================
+       MATH
+    ================================================== */
+
+    math: {
+
+        easy: [
+
+            {
+                q: "What is 10 + 15?",
+                a: ["20", "25", "30", "35"],
+                correct: 1
+            },
+
+            {
+                q: "What is 8 × 7?",
+                a: ["54", "56", "64", "48"],
+                correct: 1
+            },
+
+            {
+                q: "What is 100 ÷ 5?",
+                a: ["10", "15", "20", "25"],
+                correct: 2
+            },
+
+            {
+                q: "What is 50 - 17?",
+                a: ["33", "37", "27", "43"],
+                correct: 0
+            },
+
+            {
+                q: "What is 9 + 6?",
+                a: ["12", "13", "15", "18"],
+                correct: 2
+            }
+
+        ],
+
+        medium: [
+
+            {
+                q: "Solve: 3x + 5 = 20",
+                a: ["x = 3", "x = 5", "x = 7", "x = 8"],
+                correct: 1
+            },
+
+            {
+                q: "What is 15²?",
+                a: ["125", "200", "225", "250"],
+                correct: 2
+            },
+
+            {
+                q: "What is 3/4 as a decimal?",
+                a: ["0.25", "0.50", "0.75", "1.25"],
+                correct: 2
+            },
+
+            {
+                q: "What is the area of a rectangle 8 × 6?",
+                a: ["14", "28", "48", "56"],
+                correct: 2
+            },
+
+            {
+                q: "What is 20% of 150?",
+                a: ["20", "25", "30", "35"],
+                correct: 2
+            }
+
+        ],
+
+        hard: [
+
+            {
+                q: "Solve: 2x + 10 = 4x - 6",
+                a: ["x = 6", "x = 8", "x = 10", "x = 12"],
+                correct: 1
+            },
+
+            {
+                q: "What is the square root of 144?",
+                a: ["10", "11", "12", "14"],
+                correct: 2
+            },
+
+            {
+                q: "If x² = 81, what is the positive value of x?",
+                a: ["7", "8", "9", "10"],
+                correct: 2
+            },
+
+            {
+                q: "What is 2⁵?",
+                a: ["16", "24", "32", "64"],
+                correct: 2
+            },
+
+            {
+                q: "What is the slope of y = 3x + 2?",
+                a: ["2", "3", "5", "6"],
+                correct: 1
+            }
+
+        ]
+
+    },
+
+
+    /* ==================================================
+       SCIENCE
+    ================================================== */
+
+    science: {
+
+        easy: [
+
+            {
+                q: "Which planet is known as the Red Planet?",
+                a: ["Earth", "Mars", "Venus", "Jupiter"],
+                correct: 1
+            },
+
+            {
+                q: "What gas do humans need to breathe?",
+                a: ["Oxygen", "Hydrogen", "Helium", "Carbon dioxide"],
+                correct: 0
+            },
+
+            {
+                q: "Which organ pumps blood?",
+                a: ["Brain", "Heart", "Lungs", "Stomach"],
+                correct: 1
+            },
+
+            {
+                q: "How many legs does an insect have?",
+                a: ["4", "6", "8", "10"],
+                correct: 1
+            },
+
+            {
+                q: "Water freezes at what temperature?",
+                a: ["0°C", "10°C", "50°C", "100°C"],
+                correct: 0
+            }
+
+        ],
+
+        medium: [
+
+            {
+                q: "What is the center of an atom called?",
+                a: ["Electron", "Nucleus", "Cell", "Molecule"],
+                correct: 1
+            },
+
+            {
+                q: "Which organelle produces most cellular energy?",
+                a: ["Nucleus", "Ribosome", "Mitochondrion", "Cell wall"],
+                correct: 2
+            },
+
+            {
+                q: "What force pulls objects toward Earth?",
+                a: ["Friction", "Gravity", "Magnetism", "Pressure"],
+                correct: 1
+            },
+
+            {
+                q: "Which blood cells help fight infection?",
+                a: ["Red blood cells", "White blood cells", "Platelets", "Plasma"],
+                correct: 1
+            },
+
+            {
+                q: "What process do plants use to make food?",
+                a: ["Respiration", "Digestion", "Photosynthesis", "Fermentation"],
+                correct: 2
+            }
+
+        ],
+
+        hard: [
+
+            {
+                q: "What particle has a negative charge?",
+                a: ["Proton", "Neutron", "Electron", "Nucleus"],
+                correct: 2
+            },
+
+            {
+                q: "What is the chemical symbol for sodium?",
+                a: ["S", "Na", "So", "Sn"],
+                correct: 1
+            },
+
+            {
+                q: "Which law states that energy cannot be created or destroyed?",
+                a: [
+                    "Law of Gravity",
+                    "Law of Conservation of Energy",
+                    "Ohm's Law",
+                    "Boyle's Law"
+                ],
+                correct: 1
+            },
+
+            {
+                q: "What is the basic unit of life?",
+                a: ["Atom", "Organ", "Cell", "Tissue"],
+                correct: 2
+            },
+
+            {
+                q: "Which layer of Earth is mostly liquid?",
+                a: ["Crust", "Mantle", "Outer core", "Inner core"],
+                correct: 2
+            }
+
+        ]
+
+    },
+
+
+    /* ==================================================
+       PHILIPPINE HISTORY
+    ================================================== */
+
+    history: {
+
+        easy: [
+
+            {
+                q: "Who is widely recognized as the national hero of the Philippines?",
+                a: [
+                    "Jose Rizal",
+                    "Andres Bonifacio",
+                    "Emilio Aguinaldo",
+                    "Manuel Quezon"
+                ],
+                correct: 0
+            },
+
+            {
+                q: "What is the capital of the Philippines?",
+                a: [
+                    "Cebu",
+                    "Davao",
+                    "Manila",
+                    "Iloilo"
+                ],
+                correct: 2
+            },
+
+            {
+                q: "Who founded the Katipunan?",
+                a: [
+                    "Andres Bonifacio",
+                    "Jose Rizal",
+                    "Emilio Aguinaldo",
+                    "Apolinario Mabini"
+                ],
+                correct: 0
+            },
+
+            {
+                q: "What year did the Philippines declare independence from Spain?",
+                a: [
+                    "1896",
+                    "1898",
+                    "1901",
+                    "1946"
+                ],
+                correct: 1
+            },
+
+            {
+                q: "Who wrote Noli Me Tangere?",
+                a: [
+                    "Jose Rizal",
+                    "Andres Bonifacio",
+                    "Marcelo del Pilar",
+                    "Emilio Jacinto"
+                ],
+                correct: 0
+            }
+
+        ],
+
+        medium: [
+
+            {
+                q: "Who was the first president of the Philippine Republic?",
+                a: [
+                    "Manuel Quezon",
+                    "Emilio Aguinaldo",
+                    "Manuel Roxas",
+                    "Sergio Osmeña"
+                ],
+                correct: 1
+            },
+
+            {
+                q: "Who was known as the 'Brains of the Katipunan'?",
+                a: [
+                    "Emilio Jacinto",
+                    "Antonio Luna",
+                    "Gregorio del Pilar",
+                    "Miguel Malvar"
+                ],
+                correct: 0
+            },
+
+            {
+                q: "Where was Philippine independence proclaimed in 1898?",
+                a: [
+                    "Manila",
+                    "Kawit, Cavite",
+                    "Cebu",
+                    "Vigan"
+                ],
+                correct: 1
+            },
+
+            {
+                q: "Who was the first president of the Philippine Commonwealth?",
+                a: [
+                    "Manuel Quezon",
+                    "Emilio Aguinaldo",
+                    "Manuel Roxas",
+                    "Ramon Magsaysay"
+                ],
+                correct: 0
+            },
+
+            {
+                q: "What organization did Jose Rizal found in 1892?",
+                a: [
+                    "Katipunan",
+                    "La Liga Filipina",
+                    "Philippine Assembly",
+                    "Propaganda Movement"
+                ],
+                correct: 1
+            }
+
+        ],
+
+        hard: [
+
+            {
+                q: "Who authored the Kartilya ng Katipunan?",
+                a: [
+                    "Emilio Jacinto",
+                    "Jose Rizal",
+                    "Andres Bonifacio",
+                    "Marcelo del Pilar"
+                ],
+                correct: 0
+            },
+
+            {
+                q: "What year was the 1899 Malolos Constitution promulgated?",
+                a: [
+                    "1896",
+                    "1898",
+                    "1899",
+                    "1901"
+                ],
+                correct: 2
+            },
+
+            {
+                q: "Who was the president of the First Philippine Republic?",
+                a: [
+                    "Emilio Aguinaldo",
+                    "Manuel Quezon",
+                    "Jose P. Laurel",
+                    "Manuel Roxas"
+                ],
+                correct: 0
+            },
+
+            {
+                q: "Which treaty transferred the Philippines from Spain to the United States?",
+                a: [
+                    "Treaty of Versailles",
+                    "Treaty of Paris",
+                    "Treaty of Tordesillas",
+                    "Treaty of Manila"
+                ],
+                correct: 1
+            },
+
+            {
+                q: "Who was the first president of the Philippine Commonwealth?",
+                a: [
+                    "Sergio Osmeña",
+                    "Manuel Quezon",
+                    "Manuel Roxas",
+                    "Ramon Magsaysay"
+                ],
+                correct: 1
+            }
+
+        ]
+
+    },
+
+
+    /* ==================================================
+       ENGLISH
+    ================================================== */
+
+    english: {
+
+        easy: [
+
+            {
+                q: "Choose the correct sentence.",
+                a: [
+                    "She go to school.",
+                    "She goes to school.",
+                    "She going to school.",
+                    "She gone to school."
+                ],
+                correct: 1
+            },
+
+            {
+                q: "What is the opposite of 'hot'?",
+                a: [
+                    "Warm",
+                    "Cold",
+                    "Dry",
+                    "Bright"
+                ],
+                correct: 1
+            },
+
+            {
+                q: "Which word is a noun?",
+                a: [
+                    "Run",
+                    "Beautiful",
+                    "Teacher",
+                    "Quickly"
+                ],
+                correct: 2
+            },
+
+            {
+                q: "Choose the correct word: They ___ happy.",
+                a: [
+                    "is",
+                    "am",
+                    "are",
+                    "be"
+                ],
+                correct: 2
+            },
+
+            {
+                q: "Which word means the same as 'happy'?",
+                a: [
+                    "Sad",
+                    "Angry",
+                    "Joyful",
+                    "Tired"
+                ],
+                correct: 2
+            }
+
+        ],
+
+        medium: [
+
+            {
+                q: "Which sentence is in the past tense?",
+                a: [
+                    "I eat breakfast.",
+                    "I am eating breakfast.",
+                    "I ate breakfast.",
+                    "I will eat breakfast."
+                ],
+                correct: 2
+            },
+
+            {
+                q: "What is the plural form of 'child'?",
+                a: [
+                    "Childs",
+                    "Children",
+                    "Childes",
+                    "Childrens"
+                ],
+                correct: 1
+            },
+
+            {
+                q: "Which word is an adjective?",
+                a: [
+                    "Beautiful",
+                    "Run",
+                    "Quickly",
+                    "Teacher"
+                ],
+                correct: 0
+            },
+
+            {
+                q: "Choose the correct sentence.",
+                a: [
+                    "Their going home.",
+                    "They're going home.",
+                    "There going home.",
+                    "Theyre going home."
+                ],
+                correct: 1
+            },
+
+            {
+                q: "What is the synonym of 'large'?",
+                a: [
+                    "Tiny",
+                    "Small",
+                    "Huge",
+                    "Short"
+                ],
+                correct: 2
+            }
+
+        ],
+
+        hard: [
+
+            {
+                q: "Which sentence uses a semicolon correctly?",
+                a: [
+                    "I studied; because I had a test.",
+                    "I studied; I had a test.",
+                    "I; studied because I had a test.",
+                    "I studied because; I had a test."
+                ],
+                correct: 1
+            },
+
+            {
+                q: "Which word is an adverb?",
+                a: [
+                    "Quickly",
+                    "Quick",
+                    "Runner",
+                    "Run"
+                ],
+                correct: 0
+            },
+
+            {
+                q: "Choose the correct form: If I ___ you, I would study.",
+                a: [
+                    "am",
+                    "was",
+                    "were",
+                    "be"
+                ],
+                correct: 2
+            },
+
+            {
+                q: "Which sentence is grammatically correct?",
+                a: [
+                    "Neither of the students are ready.",
+                    "Neither of the students is ready.",
+                    "Neither students is ready.",
+                    "Neither students are ready."
+                ],
+                correct: 1
+            },
+
+            {
+                q: "What is the meaning of 'ambiguous'?",
+                a: [
+                    "Very clear",
+                    "Having more than one possible meaning",
+                    "Extremely loud",
+                    "Completely false"
+                ],
+                correct: 1
+            }
+
+        ]
+
+    }
+
+};
+
+
+
+/* ==================================================
+   SUBJECT INFORMATION
+================================================== */
+
+const subjectInfo = {
+
+    math: {
+
+        name: "MATH",
+
+        boss: "ALGEBRA GOLEM",
+
+        icon: "➗",
+
+        theme: "MATH BOSS"
+
+    },
+
+    science: {
+
+        name: "SCIENCE",
+
+        boss: "ATOM TITAN",
+
+        icon: "🔬",
+
+        theme: "SCIENCE BOSS"
+
+    },
+
+    history: {
+
+        name: "PHILIPPINE HISTORY",
+
+        boss: "HISTORY WARDEN",
+
+        icon: "🇵🇭",
+
+        theme: "HISTORY BOSS"
+
+    },
+
+    english: {
+
+        name: "ENGLISH",
+
+        boss: "GRAMMAR DRAGON",
+
+        icon: "📚",
+
+        theme: "ENGLISH BOSS"
+
+    }
+
+};
+
+
+
+/* ==================================================
+   GAME VARIABLES
+================================================== */
+
+let currentSubject = "";
+
+let currentDifficulty = "";
+
+let currentQuestionIndex = 0;
+
+let bossHP = 100;
+
+let bossMaxHP = 100;
+
+let combo = 0;
+
+let shields = 3;
+
+let score = 0;
+
+let damageDealt = 0;
+
+let battleQuestions = [];
+
+let coreSync = false;
+
+
+
+/* ==================================================
+   PLAYER LEVEL SYSTEM
+================================================== */
+
+/*
+    LEVEL 1 needs 100 XP.
+
+    LEVEL 2 needs 105 XP.
+
+    LEVEL 3 needs 110 XP.
+
+    LEVEL 4 needs 115 XP.
+
+    The XP requirement increases by 5
+    every time the player levels up.
+*/
+
+let playerLevel = 1;
+
+let levelXP = 0;
+
+let levelRequirement = 100;
+
+
+
+/* ==================================================
+   ELEMENTS
+================================================== */
+
+const screens =
+    document.querySelectorAll(".screen");
+
+
+const levelText =
+    document.getElementById("levelText");
+
+
+const xpText =
+    document.getElementById("xpText");
+
+
+const xpProgress =
+    document.getElementById("xpProgress");
+
+
+const difficultyTitle =
+    document.getElementById("difficultyTitle");
+
+
+const gameTitle =
+    document.getElementById("bossName");
+
+
+const bossIcon =
+    document.getElementById("bossIcon");
+
+
+const bossSubject =
+    document.getElementById("bossSubject");
+
+
+const bossHpText =
+    document.getElementById("bossHpText");
+
+
+const bossMaxHp =
+    document.getElementById("bossMaxHp");
+
+
+const bossHpBar =
+    document.getElementById("bossHpBar");
+
+
+const coreStatus =
+    document.getElementById("coreStatus");
+
+
+const shieldsText =
+    document.getElementById("shields");
+
+
+const comboText =
+    document.getElementById("combo");
+
+
+const questionNumber =
+    document.getElementById("questionNumber");
+
+
+const questionText =
+    document.getElementById("question");
+
+
+const answers =
+    document.getElementById("answers");
+
+
+const battleResult =
+    document.getElementById("battleResult");
+
+
+const nextButton =
+    document.getElementById("nextButton");
+
+
+const hint =
+    document.getElementById("hint");
+
+
+
+/* ==================================================
+   SCREEN FUNCTION
+================================================== */
+
+function showScreen(id) {
+
+    screens.forEach(screen => {
+
+        screen.classList.remove("active");
+
+    });
+
+
+    document
+        .getElementById(id)
+        .classList.add("active");
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+
+/* ==================================================
+   NORMAL NAVIGATION
+================================================== */
+
+document.addEventListener(
+    "click",
+    event => {
+
+        const button =
+            event.target.closest("[data-go]");
+
+
+        if (!button) {
+            return;
+        }
+
+
+        showScreen(
+            button.dataset.go
+        );
+
+    }
+);
+
+
+
+/* ==================================================
+   SUBJECT SELECTION
+================================================== */
+
+document
+    .querySelectorAll(".subjectCard")
+    .forEach(card => {
+
+        card.addEventListener(
+            "click",
+            () => {
+
+                currentSubject =
+                    card.dataset.subject;
+
+
+                difficultyTitle.textContent =
+                    subjectInfo[currentSubject].name +
+                    " — SELECT DIFFICULTY";
+
+
+                showScreen("difficulty");
+
+            }
+        );
+
+    });
+
+
+
+/* ==================================================
+   DIFFICULTY SELECTION
+================================================== */
+
+document
+    .querySelectorAll(".difficultyCard")
+    .forEach(card => {
+
+        card.addEventListener(
+            "click",
+            () => {
+
+                currentDifficulty =
+                    card.dataset.difficulty;
+
+
+                startBattle();
+
+            }
+        );
+
+    });
+
+
+
+/* ==================================================
+   START BATTLE
+================================================== */
+
+function startBattle() {
+
+    /* Set boss HP */
+
+    if (currentDifficulty === "easy") {
+
+        bossMaxHP = 100;
+
+    }
+
+    else if (currentDifficulty === "medium") {
+
+        bossMaxHP = 200;
+
+    }
+
+    else {
+
+        bossMaxHP = 300;
+
+    }
+
+
+    bossHP = bossMaxHP;
+
+
+    /* Reset battle */
+
+    currentQuestionIndex = 0;
+
+    score = 0;
+
+    damageDealt = 0;
+
+    combo = 0;
+
+    shields = 3;
+
+    coreSync = false;
+
+
+    /* Copy question deck */
+
+    battleQuestions =
+        [...questions[currentSubject][currentDifficulty]];
+
+
+    setupBoss();
+
+    updateBattleUI();
+
+    showScreen("battle");
+
+    loadQuestion();
+
+}
+
+
+
+/* ==================================================
+   SETUP BOSS
+================================================== */
+
+function setupBoss() {
+
+    const info =
+        subjectInfo[currentSubject];
+
+
+    bossIcon.textContent =
+        info.icon;
+
+
+    gameTitle.textContent =
+        info.boss;
+
+
+    bossSubject.textContent =
+        info.theme +
+        " • " +
+        currentDifficulty.toUpperCase();
+
+
+    bossMaxHP.textContent =
+        bossMaxHPValue();
+
+
+    /*
+        Gives each subject its own
+        visual boss theme.
+    */
+
+    const bossArea =
+        document.getElementById("bossArea");
+
+
+    bossArea.className =
+        "bossArea " +
+        currentSubject +
+        "Boss";
+
+}
+
+
+
+/* ==================================================
+   GET MAX HP
+================================================== */
+
+function bossMaxHPValue() {
+
+    return bossMaxHP;
+
+}
+
+
+
+/* ==================================================
+   LOAD QUESTION
+================================================== */
+
+function loadQuestion() {
+
+    /*
+        If we reach the end of the deck,
+        reshuffle and start again.
+
+        This allows HARD mode to reach
+        300 HP / 15 correct hits without
+        requiring 15 completely separate
+        questions.
+    */
+
+    if (
+        currentQuestionIndex >=
+        battleQuestions.length
+    ) {
+
+        battleQuestions =
+            shuffle(
+                [...questions[currentSubject][currentDifficulty]]
+            );
+
+        currentQuestionIndex = 0;
+
+    }
+
+
+    const current =
+        battleQuestions[currentQuestionIndex];
+
+
+    questionNumber.textContent =
+        "QUESTION " +
+        (damageDealt / 20 + 1);
+
+
+    questionText.textContent =
+        current.q;
+
+
+    answers.innerHTML = "";
+
+    battleResult.textContent = "";
+
+
+    nextButton.classList.add("hidden");
+
+
+    hint.classList.add("hidden");
+
+    hint.textContent = "";
+
+
+    /*
+        CORE SYNC
+
+        Every 3 consecutive correct answers
+        gives the player a hint.
+    */
+
+    if (coreSync) {
+
+        hint.classList.remove("hidden");
+
+
+        hint.textContent =
+            "⚡ CORE SYNC: Look for the answer that directly matches the key idea.";
+
+        coreSync = false;
+
+    }
+
+
+    current.a.forEach(
+        (answer, index) => {
+
+            const button =
+                document.createElement("button");
+
+
+            button.className =
+                "answerButton";
+
+
+            button.textContent =
+                answer;
+
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    checkAnswer(
+                        index,
+                        button,
+                        current
+                    );
+
+                }
+            );
+
+
+            answers.appendChild(
+                button
+            );
+
+        }
+    );
+
+}
+
+
+
+/* ==================================================
+   CHECK ANSWER
+================================================== */
+
+function checkAnswer(
+    selected,
+    selectedButton,
+    current
+) {
+
+    const allButtons =
+        document.querySelectorAll(
+            ".answerButton"
+        );
+
+
+    allButtons.forEach(button => {
+
+        button.disabled = true;
+
+    });
+
+
+
+    /* =========================================
+       CORRECT
+    ========================================= */
+
+    if (
+        selected ===
+        current.correct
+    ) {
+
+        selectedButton.classList.add(
+            "correct"
+        );
+
+
+        /*
+            EVERY CORRECT ANSWER = 20 DAMAGE
+        */
+
+        bossHP =
+            Math.max(
+                0,
+                bossHP - 20
+            );
+
+
+        damageDealt += 20;
+
+        score++;
+
+
+        combo++;
+
+
+        /*
+            Earn 20 XP
+        */
+
+        addXP(20);
+
+
+        battleResult.textContent =
+            "⚡ CORRECT! BOSS TAKES 20 DAMAGE!";
+
+
+        /*
+            Every 3 consecutive correct
+            answers activates CORE SYNC.
+        */
+
+        if (
+            combo > 0 &&
+            combo % 3 === 0
+        ) {
+
+            coreSync = true;
+
+            coreStatus.textContent =
+                "CORE STATUS: SYNC CHARGED ⚡";
+
+            coreStatus.classList.add(
+                "syncReady"
+            );
+
+        }
+
+
+        /*
+            BOSS DEFEATED
+        */
+
+        if (bossHP <= 0) {
+
+            setTimeout(
+                missionSuccessful,
+                700
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    /* =========================================
+       WRONG
+    ========================================= */
+
+    else {
+
+        selectedButton.classList.add(
+            "wrong"
+        );
+
+
+        /*
+            Show correct answer
+        */
+
+        allButtons[
+            current.correct
+        ].classList.add(
+            "correct"
+        );
+
+
+        /*
+            Wrong answer breaks combo
+        */
+
+        combo = 0;
+
+
+        /*
+            Lose one shield
+        */
+
+        shields--;
+
+
+        battleResult.textContent =
+            "✖ WRONG! You lost 1 shield.";
+
+
+        if (shields <= 0) {
+
+            setTimeout(
+                missionFailed,
+                700
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    currentQuestionIndex++;
+
+
+    updateBattleUI();
+
+
+    nextButton.classList.remove(
+        "hidden"
+    );
+
+}
+
+
+
+/* ==================================================
+   NEXT QUESTION
+================================================== */
+
+nextButton.addEventListener(
+    "click",
+    () => {
+
+        loadQuestion();
+
+    }
+);
+
+
+
+/* ==================================================
+   UPDATE BATTLE UI
+================================================== */
+
+function updateBattleUI() {
+
+    /*
+        Boss HP number
+    */
+
+    bossHpText.textContent =
+        bossHP;
+
+
+    /*
+        Boss HP bar
+    */
+
+    const hpPercent =
+        (bossHP / bossMaxHP) * 100;
+
+
+    bossHpBar.style.width =
+        hpPercent + "%";
+
+
+    /*
+        Combo
+    */
+
+    comboText.textContent =
+        combo;
+
+
+    /*
+        Shields
+    */
+
+    if (shields === 3) {
+
+        shieldsText.textContent =
+            "❤️ ❤️ ❤️";
+
+    }
+
+    else if (shields === 2) {
+
+        shieldsText.textContent =
+            "❤️ ❤️ 🖤";
+
+    }
+
+    else if (shields === 1) {
+
+        shieldsText.textContent =
+            "❤️ 🖤 🖤";
+
+    }
+
+    else {
+
+        shieldsText.textContent =
+            "🖤 🖤 🖤";
+
+    }
+
+
+    /*
+        Normal core status
+    */
+
+    if (!coreSync && combo % 3 !== 0) {
+
+        coreStatus.textContent =
+            "CORE STATUS: STABLE";
+
+        coreStatus.classList.remove(
+            "syncReady"
+        );
+
+    }
+
+}
+
+
+
+/* ==================================================
+   MISSION SUCCESSFUL
+================================================== */
+
+function missionSuccessful() {
+
+    /*
+        Boss defeat bonus
+    */
+
+    const bonusXP = 50;
+
+    addXP(bonusXP);
+
+
+    document.getElementById(
+        "successScore"
+    ).textContent =
+        score;
+
+
+    document.getElementById(
+        "damageDealt"
+    ).textContent =
+        damageDealt;
+
+
+    document.getElementById(
+        "earnedXP"
+    ).textContent =
+        (score * 20) + bonusXP;
+
+
+    document.getElementById(
+        "successText"
+    ).textContent =
+        "You defeated " +
+        subjectInfo[currentSubject].boss +
+        " on " +
+        currentDifficulty.toUpperCase() +
+        " difficulty!";
+
+
+    showScreen("success");
+
+}
+
+
+
+/* ==================================================
+   MISSION FAILED
+================================================== */
+
+function missionFailed() {
+
+    document.getElementById(
+        "failedDamage"
+    ).textContent =
+        damageDealt;
+
+
+    document.getElementById(
+        "failedScore"
+    ).textContent =
+        score;
+
+
+    showScreen("failed");
+
+}
+
+
+
+/* ==================================================
+   RETRY
+================================================== */
+
+document
+    .getElementById("retryButton")
+    .addEventListener(
+        "click",
+        () => {
+
+            startBattle();
+
+        }
+    );
+
+
+
+/* ==================================================
+   XP SYSTEM
+================================================== */
+
+function addXP(amount) {
+
+    levelXP += amount;
+
+
+    /*
+        Keep leveling up while enough XP exists.
+    */
+
+    while (
+        levelXP >=
+        levelRequirement
+    ) {
+
+        levelXP -=
+            levelRequirement;
+
+
+        playerLevel++;
+
+
+        /*
+            Next level needs 5 more XP.
+
+            Level 1 = 100
+            Level 2 = 105
+            Level 3 = 110
+            Level 4 = 115
+        */
+
+        levelRequirement =
+            100 +
+            ((playerLevel - 1) * 5);
+
+
+        showLevelUp();
+
+    }
+
+
+    updateXP();
+
+}
+
+
+
+/* ==================================================
+   UPDATE XP BAR
+================================================== */
+
+function updateXP() {
+
+    levelText.textContent =
+        "LEVEL " +
+        playerLevel;
+
+
+    xpText.textContent =
+        "XP " +
+        levelXP +
+        " / " +
+        levelRequirement;
+
+
+    const percentage =
+        (levelXP /
+        levelRequirement) *
+        100;
+
+
+    xpProgress.style.width =
+        percentage + "%";
+
+}
+
+
+
+/* ==================================================
+   LEVEL UP EFFECT
+================================================== */
+
+function showLevelUp() {
+
+    const message =
+        document.createElement("div");
+
+
+    message.className =
+        "levelUpMessage";
+
+
+    message.textContent =
+        "⚡ LEVEL UP! LEVEL " +
+        playerLevel +
+        " ⚡";
+
+
+    document.body.appendChild(
+        message
+    );
+
+
+    setTimeout(
+        () => {
+
+            message.remove();
+
+        },
+        1600
+    );
+
+}
+
+
+
+/* ==================================================
+   SHUFFLE QUESTIONS
+================================================== */
+
+function shuffle(array) {
+
+    for (
+        let i = array.length - 1;
+        i > 0;
+        i--
+    ) {
+
+        const j =
+            Math.floor(
+                Math.random() *
+                (i + 1)
+            );
+
+
+        [
+            array[i],
+            array[j]
+        ] =
+        [
+            array[j],
+            array[i]
+        ];
+
+    }
+
+
+    return array;
+
+}
+
+
+
+/* ==================================================
+   INITIALIZE
+================================================== */
+
+updateXP();
+
+</script>
+
+</body>
+</html>
