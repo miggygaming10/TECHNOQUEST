@@ -973,3 +973,178 @@ document.addEventListener("DOMContentLoaded", () => {
     showScreen("homeScreen");
 
 });
+
+/* =====================================================
+   TECHNOQUEST SOUNDS
+===================================================== */
+
+function playSound(soundId) {
+
+    const sound = document.getElementById(soundId);
+
+    if (!sound) return;
+
+    sound.currentTime = 0;
+
+    sound.play().catch(() => {
+        // Browser may block audio until user interacts
+    });
+}
+
+
+/* =====================================================
+   BUTTON CLICK SOUND
+===================================================== */
+
+document.addEventListener("click", function(event) {
+
+    if (
+        event.target.tagName === "BUTTON" ||
+        event.target.closest("button")
+    ) {
+        playSound("clickSound");
+    }
+
+});
+
+
+/* =====================================================
+   GAME SOUND FUNCTIONS
+===================================================== */
+
+function playCorrectSound() {
+
+    playSound("correctSound");
+
+}
+
+
+function playWrongSound() {
+
+    playSound("wrongSound");
+
+}
+
+
+function playDamageSound() {
+
+    playSound("damageSound");
+
+}
+
+
+function playSuccessSound() {
+
+    playSound("successSound");
+
+}
+
+
+function playFailedSound() {
+
+    playSound("failedSound");
+
+}
+
+
+function playLevelUpSound() {
+
+    playSound("levelSound");
+
+}
+
+
+function playLoginSound() {
+
+    playSound("loginSound");
+
+}
+
+
+/* =====================================================
+   THEMES
+===================================================== */
+
+function toggleThemes() {
+
+    const menu =
+        document.getElementById("themeMenu");
+
+    menu.classList.toggle("show");
+
+}
+
+
+function setTheme(theme) {
+
+    document.body.classList.remove(
+        "theme-cyber",
+        "theme-inferno",
+        "theme-galaxy",
+        "theme-matrix",
+        "theme-ice"
+    );
+
+
+    document.body.classList.add(
+        "theme-" + theme
+    );
+
+
+    localStorage.setItem(
+        "technoquestTheme",
+        theme
+    );
+
+
+    document
+        .getElementById("themeMenu")
+        .classList.remove("show");
+
+}
+
+
+/* =====================================================
+   LOAD SAVED THEME
+===================================================== */
+
+const savedTheme =
+    localStorage.getItem(
+        "technoquestTheme"
+    );
+
+
+if (savedTheme) {
+
+    setTheme(savedTheme);
+
+} else {
+
+    document.body.classList.add(
+        "theme-cyber"
+    );
+
+}
+
+
+/* =====================================================
+   CLOSE THEME MENU
+===================================================== */
+
+document.addEventListener("click", function(event) {
+
+    const panel =
+        document.querySelector(".theme-panel");
+
+    if (
+        panel &&
+        !panel.contains(event.target)
+    ) {
+
+        document
+            .getElementById("themeMenu")
+            .classList.remove("show");
+
+    }
+
+});
