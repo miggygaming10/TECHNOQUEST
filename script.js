@@ -575,24 +575,29 @@ function checkAnswer(selectedAnswer, correctAnswer) {
         });
 
 
-    if (selectedAnswer === correctAnswer) {
+   if (selectedAnswer === correctAnswer) {
 
-        // Correct answer
-        score += 20;
+    // Correct answer
+    score += 20;
 
-        addXP(20);
+    addXP(20);
 
-        showFeedback("CORRECT!", true);
+    showFeedback("CORRECT!", true);
 
+    // 🔊 Correct answer sound
+    playCorrectSound();
 
-        // Boss Battle damage
-        if (currentMode === "boss") {
+    // Boss Battle damage
+    if (currentMode === "boss") {
 
-            bossHP -= 20;
+        // 🔊 Boss damage sound
+        playDamageSound();
 
-            if (bossHP < 0) {
-                bossHP = 0;
-            }
+        bossHP -= 20;
+
+        if (bossHP < 0) {
+            bossHP = 0;
+        }
 
             updateBossHP();
 
