@@ -1142,6 +1142,59 @@ document
 
 </script>
 
+<!-- =====================================================
+     SOUND EFFECTS
+===================================================== -->
+
+<audio id="clickSound" src="sounds/click.mp3"></audio>
+<audio id="correctSound" src="sounds/correct.mp3"></audio>
+<audio id="wrongSound" src="sounds/wrong.mp3"></audio>
+<audio id="damageSound" src="sounds/damage.mp3"></audio>
+<audio id="successSound" src="sounds/success.mp3"></audio>
+<audio id="failedSound" src="sounds/failed.mp3"></audio>
+<audio id="levelSound" src="sounds/levelup.mp3"></audio>
+<audio id="loginSound" src="sounds/login.mp3"></audio>
+
+
+<!-- =====================================================
+     THEME SELECTOR
+===================================================== -->
+
+<div class="theme-panel">
+
+    <button class="theme-button"
+            onclick="toggleThemes()">
+
+        🎨 THEME
+
+    </button>
+
+    <div id="themeMenu"
+         class="theme-menu">
+
+        <button onclick="setTheme('cyber')">
+            ⚡ Cyber Neon
+        </button>
+
+        <button onclick="setTheme('inferno')">
+            🔥 Inferno
+        </button>
+
+        <button onclick="setTheme('galaxy')">
+            🌌 Galaxy
+        </button>
+
+        <button onclick="setTheme('matrix')">
+            🟢 Matrix
+        </button>
+
+        <button onclick="setTheme('ice')">
+            ❄️ Ice Core
+        </button>
+
+    </div>
+
+</div>
 
 <!-- YOUR GAME JAVASCRIPT -->
 
