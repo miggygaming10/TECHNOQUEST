@@ -1969,3 +1969,329 @@ body {
     }
 
 }
+
+/* =====================================================
+   THEME SELECTOR
+===================================================== */
+
+.theme-panel {
+    position: fixed;
+
+    right: 20px;
+
+    bottom: 20px;
+
+    z-index: 900;
+}
+
+
+.theme-button {
+    padding: 11px 16px;
+
+    border-radius: 8px;
+
+    border: 1px solid #00f7ff;
+
+    background: #101820;
+
+    color: #00f7ff;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 0 12px rgba(0, 247, 255, 0.15);
+
+    transition: 0.2s;
+}
+
+
+.theme-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 20px rgba(0, 247, 255, 0.4);
+}
+
+
+.theme-menu {
+    position: absolute;
+
+    right: 0;
+
+    bottom: 50px;
+
+    width: 170px;
+
+    padding: 8px;
+
+    background: #0b1117;
+
+    border: 1px solid #33434f;
+
+    border-radius: 10px;
+
+    display: none;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+
+.theme-menu.show {
+    display: block;
+}
+
+
+.theme-menu button {
+    width: 100%;
+
+    padding: 11px;
+
+    margin-bottom: 4px;
+
+    background: transparent;
+
+    border: none;
+
+    border-radius: 6px;
+
+    color: #dce8ee;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    font-size: 11px;
+}
+
+
+.theme-menu button:hover {
+    background: rgba(0, 247, 255, 0.1);
+
+    color: #00f7ff;
+}
+
+
+/* =====================================================
+   THEME VARIABLES
+===================================================== */
+
+:root {
+    --main-color: #00f7ff;
+    --main-glow: rgba(0, 247, 255, 0.5);
+    --accent-color: #00a8b5;
+    --danger-color: #ff4d5a;
+}
+
+
+/* =====================================================
+   CYBER NEON
+===================================================== */
+
+body.theme-cyber {
+    --main-color: #00f7ff;
+    --main-glow: rgba(0, 247, 255, 0.5);
+    --accent-color: #00a8b5;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            #12202b,
+            #080d13 50%,
+            #05080c
+        );
+}
+
+
+/* =====================================================
+   INFERNO
+===================================================== */
+
+body.theme-inferno {
+    --main-color: #ff6b35;
+    --main-glow: rgba(255, 107, 53, 0.5);
+    --accent-color: #ff2d00;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            #32160e,
+            #130806 50%,
+            #050303
+        );
+}
+
+
+body.theme-inferno .robot-eye,
+body.theme-inferno .antenna-light,
+body.theme-inferno .robot-chest-light {
+    background: #ff6b35;
+
+    box-shadow:
+        0 0 10px #ff6b35,
+        0 0 20px #ff6b35;
+}
+
+
+body.theme-inferno .robot-logo {
+    border-color: #ff6b35;
+
+    color: #ff6b35;
+}
+
+
+/* =====================================================
+   GALAXY
+===================================================== */
+
+body.theme-galaxy {
+    --main-color: #c77dff;
+    --main-glow: rgba(199, 125, 255, 0.5);
+    --accent-color: #7b2cbf;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            #24103c,
+            #0d0717 50%,
+            #050308
+        );
+}
+
+
+body.theme-galaxy .robot-eye,
+body.theme-galaxy .antenna-light,
+body.theme-galaxy .robot-chest-light {
+    background: #c77dff;
+
+    box-shadow:
+        0 0 10px #c77dff,
+        0 0 20px #c77dff;
+}
+
+
+body.theme-galaxy .robot-logo {
+    border-color: #c77dff;
+
+    color: #c77dff;
+}
+
+
+/* =====================================================
+   MATRIX
+===================================================== */
+
+body.theme-matrix {
+    --main-color: #39ff14;
+    --main-glow: rgba(57, 255, 20, 0.5);
+    --accent-color: #00a800;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            #0c2410,
+            #061007 50%,
+            #020603
+        );
+}
+
+
+body.theme-matrix .robot-eye,
+body.theme-matrix .antenna-light,
+body.theme-matrix .robot-chest-light {
+    background: #39ff14;
+
+    box-shadow:
+        0 0 10px #39ff14,
+        0 0 20px #39ff14;
+}
+
+
+body.theme-matrix .robot-logo {
+    border-color: #39ff14;
+
+    color: #39ff14;
+}
+
+
+/* =====================================================
+   ICE CORE
+===================================================== */
+
+body.theme-ice {
+    --main-color: #9be7ff;
+    --main-glow: rgba(155, 231, 255, 0.5);
+    --accent-color: #4cc9f0;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            #102c3a,
+            #07131a 50%,
+            #03070a
+        );
+}
+
+
+body.theme-ice .robot-eye,
+body.theme-ice .antenna-light,
+body.theme-ice .robot-chest-light {
+    background: #9be7ff;
+
+    box-shadow:
+        0 0 10px #9be7ff,
+        0 0 20px #9be7ff;
+}
+
+
+body.theme-ice .robot-logo {
+    border-color: #9be7ff;
+
+    color: #9be7ff;
+}
+
+
+/* =====================================================
+   USE THEME COLOR THROUGHOUT GAME
+===================================================== */
+
+body.theme-inferno .small-title,
+body.theme-inferno .computer-label,
+body.theme-inferno .technobot-name,
+body.theme-inferno .mode-tag,
+body.theme-inferno .question-label {
+    color: var(--main-color);
+}
+
+
+body.theme-galaxy .small-title,
+body.theme-galaxy .computer-label,
+body.theme-galaxy .technobot-name,
+body.theme-galaxy .mode-tag,
+body.theme-galaxy .question-label {
+    color: var(--main-color);
+}
+
+
+body.theme-matrix .small-title,
+body.theme-matrix .computer-label,
+body.theme-matrix .technobot-name,
+body.theme-matrix .mode-tag,
+body.theme-matrix .question-label {
+    color: var(--main-color);
+}
+
+
+body.theme-ice .small-title,
+body.theme-ice .computer-label,
+body.theme-ice .technobot-name,
+body.theme-ice .mode-tag,
+body.theme-ice .question-label {
+    color: var(--main-color);
+}
