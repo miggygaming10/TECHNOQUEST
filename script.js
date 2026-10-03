@@ -439,10 +439,7 @@ const cyberQuestions = {
 // ======================================
 
 function shuffleArray(array) {
-
-    // Fisher-Yates shuffle
     for (let i = array.length - 1; i > 0; i--) {
-
         const j = Math.floor(Math.random() * (i + 1));
 
         [array[i], array[j]] = [array[j], array[i]];
@@ -480,25 +477,30 @@ function getQuestions() {
 // ======================================
 
 function startGame() {
-
     score = 0;
     questionIndex = 0;
 
-    // Copy questions so original data isn't changed
-    gameQuestions = getQuestions().map(q => ({
-        ...q,
-        options: [...q.options]
+    // Get questions
+    let selectedQuestions = getQuestions();
+
+    // Make a completely separate copy
+    gameQuestions = selectedQuestions.map(question => ({
+        question: question.question,
+        answer: question.answer,
+        options: [...question.options]
     }));
 
-    // RANDOMIZE QUESTION ORDER
+    // RANDOMIZE THE QUESTIONS
     shuffleArray(gameQuestions);
 
-    // RANDOMIZE ANSWER ORDER
+    // RANDOMIZE THE ANSWERS
     gameQuestions.forEach(question => {
         shuffleArray(question.options);
     });
 
-    // Boss HP
+    console.log("RANDOMIZED QUESTIONS:");
+    console.log(gameQuestions);
+
     maxBossHP = difficultyHP[currentDifficulty];
     bossHP = maxBossHP;
 
@@ -506,7 +508,6 @@ function startGame() {
 
     showScreen("gameScreen");
 
-    // Start timer for Speed Type
     if (currentMode === "speed") {
         startTimer();
     }
@@ -521,17 +522,15 @@ function startGame() {
 
 function loadQuestion() {
 
-    // Finished all questions
     if (questionIndex >= gameQuestions.length) {
-
         stopTimer();
         missionSuccess();
-
         return;
     }
 
     const question = gameQuestions[questionIndex];
 
+    // Show randomized question
     document.getElementById("question").textContent =
         question.question;
 
@@ -540,42 +539,26 @@ function loadQuestion() {
 
     answersContainer.innerHTML = "";
 
-    // Shuffle AGAIN every time the question appears
-    const shuffledOptions = shuffleArray(
-        [...question.options]
-    );
+    // Make a new randomized copy of the choices
+    let choices = [...question.options];
 
-    shuffledOptions.forEach(option => {
+    shuffleArray(choices);
+
+    choices.forEach(choice => {
 
         const button = document.createElement("button");
 
         button.className = "answer-btn";
 
-        button.textContent = option;
+        button.textContent = choice;
 
         button.onclick = function () {
-
-            checkAnswer(
-                option,
-                question.answer
-            );
-
+            checkAnswer(choice, question.answer);
         };
 
         answersContainer.appendChild(button);
     });
-
-    // Question counter if element exists
-    const counter =
-        document.getElementById("questionCounter");
-
-    if (counter) {
-
-        counter.textContent =
-            `Question ${questionIndex + 1} / ${gameQuestions.length}`;
-    }
 }
-
 
 // ======================================
 // CHECK ANSWER
