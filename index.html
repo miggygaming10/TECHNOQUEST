@@ -1,74 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>TechnoQuest - Computer Literacy</title>
+    <title>TechnoQuest</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
 <header class="topbar">
 
     <div class="logo">
+        <span class="logo-icon">⚡</span>
         TECHNOQUEST
     </div>
 
-    <div class="levelBox">
-        <strong id="levelText">LEVEL 1</strong>
-        <span id="xpText">XP 0 / 100</span>
+    <div class="header-center">
+        <span class="computer-label">COMPUTER LITERACY</span>
+
+        <div class="level-info">
+            <span id="levelText">LEVEL 1</span>
+            <span id="xpText">0 / 100 XP</span>
+        </div>
+
+        <div class="xp-container">
+            <div id="xpBar" class="xp-bar"></div>
+        </div>
     </div>
 
-    <div class="xpBar">
-        <span id="xpProgress"></span>
-    </div>
 
-    <div class="headerTitle">
-        COMPUTER LITERACY
+    <!-- LOGIN AREA -->
+
+    <div class="account-area">
+
+        <button class="login-button" onclick="openAuth('login')">
+            LOGIN
+        </button>
+
+        <button class="signup-button" onclick="openAuth('signup')">
+            SIGN UP
+        </button>
+
     </div>
 
 </header>
 
 
-<main>
+<!-- =====================================================
+     HOME SCREEN
+===================================================== -->
 
-<!-- =========================================
-     HOME
-========================================= -->
+<section id="homeScreen" class="screen active">
 
-<section id="home" class="screen active">
+    <div class="home-content">
 
-    <div class="home">
+        <div class="home-text">
 
-        <div class="computerIcon">
-            💻
+            <p class="small-title">
+                WELCOME TO
+            </p>
+
+            <h1>
+                TECHNO<span>QUEST</span>
+            </h1>
+
+            <p class="home-description">
+                Learn computer literacy through challenges,
+                missions, quizzes, and battles.
+            </p>
+
         </div>
 
-        <p class="subtitle">
-            GAME-BASED LEARNING WEBSITE
-        </p>
 
-        <h1>
-            TECHNOQUEST
-        </h1>
+        <!-- =================================================
+             TECHNOBOT
+        ================================================== -->
 
-        <h2>
-            COMPUTER LITERACY
-        </h2>
+        <div class="technobot-container">
 
-        <p class="description">
+            <div class="technobot">
 
-            Learn essential computer skills through
-            challenges, missions, quizzes, and battles.
+                <!-- Antenna -->
 
-        </p>
+                <div class="robot-antenna">
+                    <div class="antenna-light"></div>
+                </div>
 
-        <button class="primaryButton" data-go="modes">
-            START QUEST ▶
+
+                <!-- Head -->
+
+                <div class="robot-head">
+
+                    <div class="robot-screen">
+
+                        <div class="robot-eyes">
+
+                            <div class="robot-eye"></div>
+
+                            <div class="robot-eye"></div>
+
+                        </div>
+
+
+                        <div class="robot-mouth">
+
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="head-button red"></div>
+                    <div class="head-button yellow"></div>
+                    <div class="head-button green"></div>
+
+                </div>
+
+
+                <!-- Neck -->
+
+                <div class="robot-neck"></div>
+
+
+                <!-- Body -->
+
+                <div class="robot-body">
+
+                    <div class="robot-logo">
+                        T
+                    </div>
+
+                    <div class="robot-chest-light"></div>
+
+                </div>
+
+
+                <!-- Left Arm -->
+
+                <div class="robot-arm left-arm">
+
+                    <div class="robot-hand">
+
+                        <div></div>
+                        <div></div>
+                        <div></div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Right Arm -->
+
+                <div class="robot-arm right-arm">
+
+                    <div class="robot-hand">
+
+                        <div></div>
+                        <div></div>
+                        <div></div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Legs -->
+
+                <div class="robot-leg left-leg">
+
+                    <div class="robot-foot"></div>
+
+                </div>
+
+
+                <div class="robot-leg right-leg">
+
+                    <div class="robot-foot"></div>
+
+                </div>
+
+            </div>
+
+
+            <div class="technobot-name">
+                TECHNOBOT
+            </div>
+
+            <div class="technobot-title">
+                YOUR COMPUTER LITERACY GUIDE
+            </div>
+
+        </div>
+
+
+        <!-- Start Button -->
+
+        <button class="start-button"
+                onclick="showScreen('modeScreen')">
+
+            START QUEST
+
+            <span>→</span>
+
         </button>
 
     </div>
@@ -76,71 +220,74 @@
 </section>
 
 
-<!-- =========================================
-     GAME MODES
-========================================= -->
 
-<section id="modes" class="screen">
+<!-- =====================================================
+     GAME MODE SCREEN
+===================================================== -->
 
-    <div class="pageTitle">
+<section id="modeScreen" class="screen">
 
-        <h1>SELECT GAME MODE</h1>
+    <div class="section-header">
+
+        <p class="small-title">
+            CHOOSE YOUR MISSION
+        </p>
+
+        <h2>
+            GAME MODES
+        </h2>
 
         <p>
-            Choose your computer-literacy challenge.
+            Select a Computer Literacy challenge.
         </p>
 
     </div>
 
 
-    <div class="modeGrid">
+    <div class="mode-grid">
 
 
-        <!-- BOSS BATTLE -->
+        <!-- BOSS -->
 
-        <button class="modeCard bossMode"
-                data-mode="boss">
+        <button class="mode-card"
+                onclick="selectMode('boss')">
 
-            <div class="modeIcon">
-                ⚔️
+            <div class="mode-icon boss-icon">
+                ⚔
             </div>
 
-            <h2>
-                BOSS BATTLE
-            </h2>
+            <h3>BOSS BATTLE</h3>
 
             <p>
-                Answer computer questions and
-                attack the Computer Virus Boss.
+                Answer questions and damage the
+                computer boss.
             </p>
 
-            <span>
-                20 DAMAGE / CORRECT
+            <span class="mode-tag">
+                BATTLE
             </span>
 
         </button>
 
 
-        <!-- SPEED TYPE -->
+        <!-- SPEED -->
 
-        <button class="modeCard speedMode"
-                data-mode="speed">
+        <button class="mode-card"
+                onclick="selectMode('speed')">
 
-            <div class="modeIcon">
+            <div class="mode-icon speed-icon">
                 ⚡
             </div>
 
-            <h2>
-                SPEED TYPE
-            </h2>
+            <h3>SPEED TYPE</h3>
 
             <p>
-                Answer as many computer questions
-                as possible before time runs out.
+                Answer computer questions
+                before time runs out.
             </p>
 
-            <span>
-                60 SECOND CHALLENGE
+            <span class="mode-tag">
+                TIME
             </span>
 
         </button>
@@ -148,24 +295,22 @@
 
         <!-- TECH FIXER -->
 
-        <button class="modeCard fixerMode"
-                data-mode="fixer">
+        <button class="mode-card"
+                onclick="selectMode('fixer')">
 
-            <div class="modeIcon">
-                🛠️
+            <div class="mode-icon fixer-icon">
+                🔧
             </div>
 
-            <h2>
-                TECH FIXER
-            </h2>
+            <h3>TECH FIXER</h3>
 
             <p>
-                Diagnose common computer problems
-                and choose the correct solution.
+                Solve computer problems and
+                troubleshoot devices.
             </p>
 
-            <span>
-                SOLVE THE PROBLEM
+            <span class="mode-tag">
+                FIX
             </span>
 
         </button>
@@ -173,24 +318,22 @@
 
         <!-- COMPUTER CHALLENGE -->
 
-        <button class="modeCard challengeMode"
-                data-mode="challenge">
+        <button class="mode-card"
+                onclick="selectMode('challenge')">
 
-            <div class="modeIcon">
+            <div class="mode-icon challenge-icon">
                 🧠
             </div>
 
-            <h2>
-                COMPUTER CHALLENGE
-            </h2>
+            <h3>COMPUTER CHALLENGE</h3>
 
             <p>
-                Test your overall computer-literacy
-                knowledge with mixed questions.
+                Test your overall computer
+                literacy knowledge.
             </p>
 
-            <span>
-                10 QUESTIONS
+            <span class="mode-tag">
+                QUIZ
             </span>
 
         </button>
@@ -198,24 +341,22 @@
 
         <!-- FILE MASTER -->
 
-        <button class="modeCard fileMode"
-                data-mode="files">
+        <button class="mode-card"
+                onclick="selectMode('file')">
 
-            <div class="modeIcon">
-                💾
+            <div class="mode-icon file-icon">
+                📁
             </div>
 
-            <h2>
-                FILE MASTER
-            </h2>
+            <h3>FILE MASTER</h3>
 
             <p>
-                Learn file types, folders, storage,
-                extensions, and file management.
+                Master file types, extensions,
+                and digital organization.
             </p>
 
-            <span>
-                FILE CHALLENGE
+            <span class="mode-tag">
+                FILES
             </span>
 
         </button>
@@ -223,24 +364,22 @@
 
         <!-- CYBER DEFENDER -->
 
-        <button class="modeCard cyberMode"
-                data-mode="cyber">
+        <button class="mode-card"
+                onclick="selectMode('cyber')">
 
-            <div class="modeIcon">
-                🔐
+            <div class="mode-icon cyber-icon">
+                🛡
             </div>
 
-            <h2>
-                CYBER DEFENDER
-            </h2>
+            <h3>CYBER DEFENDER</h3>
 
             <p>
-                Identify phishing, malware, unsafe
-                passwords, and online security threats.
+                Protect yourself from
+                cyber threats and scams.
             </p>
 
-            <span>
-                PROTECT THE SYSTEM
+            <span class="mode-tag">
+                SECURITY
             </span>
 
         </button>
@@ -248,1815 +387,765 @@
     </div>
 
 
-    <div class="bottomButtons">
+    <button class="back-button"
+            onclick="showScreen('homeScreen')">
 
-        <button class="secondaryButton" data-go="home">
-            🏠 HOME
-        </button>
+        ← BACK
 
-    </div>
+    </button>
 
 </section>
 
 
-<!-- =========================================
-     DIFFICULTY
-========================================= -->
 
-<section id="difficulty" class="screen">
+<!-- =====================================================
+     DIFFICULTY SCREEN
+===================================================== -->
 
-    <div class="pageTitle">
+<section id="difficultyScreen" class="screen">
 
-        <h1 id="difficultyTitle">
+    <div class="section-header">
+
+        <p class="small-title">
             SELECT DIFFICULTY
-        </h1>
-
-        <p>
-            Higher difficulty means harder challenges.
         </p>
 
+        <h2>
+            HOW HARD IS YOUR QUEST?
+        </h2>
+
     </div>
 
 
-    <div class="difficultyGrid">
+    <div class="difficulty-grid">
 
-        <button class="difficultyCard easy"
-                data-difficulty="easy">
 
-            <div>🟢</div>
+        <button class="difficulty-card easy"
+                onclick="selectDifficulty('easy')">
 
-            <h2>EASY</h2>
+            <div class="difficulty-icon">
+                🌱
+            </div>
+
+            <h3>EASY</h3>
 
             <p>
-                Basic computer-literacy concepts.
-            </p>
-
-            <strong>
                 100 HP
-            </strong>
+            </p>
+
+            <span>
+                Beginner
+            </span>
 
         </button>
 
 
-        <button class="difficultyCard medium"
-                data-difficulty="medium">
+        <button class="difficulty-card medium"
+                onclick="selectDifficulty('medium')">
 
-            <div>🟡</div>
+            <div class="difficulty-icon">
+                ⚡
+            </div>
 
-            <h2>MEDIUM</h2>
+            <h3>MEDIUM</h3>
 
             <p>
-                Intermediate computer skills.
-            </p>
-
-            <strong>
                 200 HP
-            </strong>
+            </p>
+
+            <span>
+                Intermediate
+            </span>
 
         </button>
 
 
-        <button class="difficultyCard hard"
-                data-difficulty="hard">
+        <button class="difficulty-card hard"
+                onclick="selectDifficulty('hard')">
 
-            <div>🔴</div>
+            <div class="difficulty-icon">
+                ☠
+            </div>
 
-            <h2>HARD</h2>
+            <h3>HARD</h3>
 
             <p>
-                Advanced computer-literacy challenges.
-            </p>
-
-            <strong>
                 300 HP
-            </strong>
-
-        </button>
-
-    </div>
-
-
-    <div class="bottomButtons">
-
-        <button class="secondaryButton" data-go="modes">
-            ◀ GAME MODES
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- =========================================
-     BATTLE / QUESTION SCREEN
-========================================= -->
-
-<section id="game" class="screen">
-
-    <div class="gamePanel">
-
-
-        <div class="gameHeader">
-
-            <button class="smallButton" data-go="modes">
-                ◀ MODES
-            </button>
-
-            <div id="gameModeTitle">
-                COMPUTER QUEST
-            </div>
-
-            <div>
-                SCORE:
-                <strong id="score">
-                    0
-                </strong>
-            </div>
-
-        </div>
-
-
-        <!-- BOSS -->
-
-        <div id="bossArea" class="bossArea">
-
-            <div id="bossIcon" class="bossIcon">
-                🦠
-            </div>
-
-            <h1 id="bossName">
-                COMPUTER VIRUS
-            </h1>
-
-            <p id="bossDescription">
-                Destroy the virus by answering correctly!
             </p>
 
-            <div id="bossHPText">
-                BOSS HP: 100 / 100
-            </div>
-
-            <div class="bossHPBar">
-
-                <span id="bossHPBar"></span>
-
-            </div>
-
-        </div>
-
-
-        <!-- TIMER -->
-
-        <div id="timerBox" class="timerBox">
-
-            TIME:
-            <strong id="timer">
-                60
-            </strong>
-
-        </div>
-
-
-        <!-- QUESTION -->
-
-        <div class="questionNumber" id="questionNumber">
-            QUESTION 1
-        </div>
-
-
-        <div class="questionBox">
-
-            <h2 id="question">
-                Question goes here.
-            </h2>
-
-        </div>
-
-
-        <!-- ANSWERS -->
-
-        <div id="answers" class="answerGrid">
-
-        </div>
-
-
-        <div id="resultMessage" class="resultMessage">
-
-        </div>
-
-
-        <button id="nextButton"
-                class="primaryButton hidden">
-
-            NEXT QUESTION ▶
+            <span>
+                Expert
+            </span>
 
         </button>
+
+    </div>
+
+
+    <button class="back-button"
+            onclick="showScreen('modeScreen')">
+
+        ← BACK
+
+    </button>
+
+</section>
+
+
+
+<!-- =====================================================
+     GAME SCREEN
+===================================================== -->
+
+<section id="gameScreen" class="screen">
+
+    <div class="game-top">
+
+        <div class="game-stat">
+
+            <span id="timer">
+                TIME: 60
+            </span>
+
+        </div>
+
+        <div class="game-stat">
+
+            <span id="questionCounter">
+                QUESTION
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- BOSS -->
+
+    <div class="boss-area">
+
+        <div class="boss-label">
+            COMPUTER BOSS
+        </div>
+
+        <div class="boss-character">
+            🤖
+        </div>
+
+        <div class="boss-hp-container">
+
+            <div class="boss-hp-label">
+
+                <span>
+                    BOSS HP
+                </span>
+
+                <span id="bossHPText">
+                    100 / 100 HP
+                </span>
+
+            </div>
+
+            <div class="boss-hp-background">
+
+                <div id="bossHP"
+                     class="boss-hp-bar">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- QUESTION -->
+
+    <div class="question-card">
+
+        <div class="question-label">
+            COMPUTER LITERACY
+        </div>
+
+        <h2 id="question">
+            Loading question...
+        </h2>
+
+    </div>
+
+
+    <!-- ANSWERS -->
+
+    <div id="answers"
+         class="answers-container">
+
+    </div>
+
+
+    <!-- FEEDBACK -->
+
+    <div id="resultMessage"
+         class="result-message">
 
     </div>
 
 </section>
 
 
-<!-- =========================================
-     SUCCESS
-========================================= -->
 
-<section id="success" class="screen">
+<!-- =====================================================
+     SUCCESS SCREEN
+===================================================== -->
 
-    <div class="resultPanel">
+<section id="successScreen"
+         class="screen result-screen">
 
-        <div class="resultIcon">
+    <div class="result-box success-box">
+
+        <div class="result-icon">
             🏆
         </div>
+
+        <p class="small-title">
+            MISSION COMPLETE
+        </p>
 
         <h1>
             MISSION SUCCESSFUL!
         </h1>
 
-        <p id="successMessage">
-            Challenge completed!
+        <p>
+            You completed the Computer Literacy quest.
         </p>
 
-        <div class="stats">
+        <h2 id="finalScore">
+            SCORE: 0
+        </h2>
 
-            <div>
-                <span>SCORE</span>
-                <strong id="finalScore">
-                    0
-                </strong>
-            </div>
 
-            <div>
-                <span>XP EARNED</span>
-                <strong id="finalXP">
-                    0
-                </strong>
-            </div>
+        <div class="result-buttons">
+
+            <button class="start-button"
+                    onclick="retryGame()">
+
+                PLAY AGAIN
+
+            </button>
+
+            <button class="back-button"
+                    onclick="goHome()">
+
+                HOME
+
+            </button>
 
         </div>
-
-
-        <button class="primaryButton"
-                data-go="modes">
-
-            PLAY ANOTHER MODE
-
-        </button>
-
-
-        <button class="secondaryButton"
-                data-go="home">
-
-            🏠 HOME
-
-        </button>
 
     </div>
 
 </section>
 
 
-<!-- =========================================
-     FAILED
-========================================= -->
 
-<section id="failed" class="screen">
+<!-- =====================================================
+     FAILED SCREEN
+===================================================== -->
 
-    <div class="resultPanel failedPanel">
+<section id="failedScreen"
+         class="screen result-screen">
 
-        <div class="resultIcon">
-            💀
+    <div class="result-box failed-box">
+
+        <div class="result-icon">
+            💻
         </div>
+
+        <p class="small-title">
+            QUEST FAILED
+        </p>
 
         <h1>
             MISSION FAILED
         </h1>
 
-        <p id="failedMessage">
-            The challenge was not completed.
+        <p>
+            Don't give up. Try the quest again!
         </p>
 
-        <div class="stats">
+        <h2 id="failedScore">
+            SCORE: 0
+        </h2>
 
-            <div>
-                <span>SCORE</span>
-                <strong id="failedScore">
-                    0
-                </strong>
-            </div>
 
-            <div>
-                <span>XP EARNED</span>
-                <strong id="failedXP">
-                    0
-                </strong>
-            </div>
+        <div class="result-buttons">
+
+            <button class="start-button"
+                    onclick="retryGame()">
+
+                RETRY
+
+            </button>
+
+            <button class="back-button"
+                    onclick="goHome()">
+
+                HOME
+
+            </button>
 
         </div>
-
-
-        <button id="retryButton"
-                class="primaryButton">
-
-            🔄 RETRY
-
-        </button>
-
-
-        <button class="secondaryButton"
-                data-go="modes">
-
-            GAME MODES
-
-        </button>
-
-
-        <button class="secondaryButton"
-                data-go="home">
-
-            🏠 HOME
-
-        </button>
 
     </div>
 
 </section>
 
-</main>
 
+
+<!-- =====================================================
+     LEVEL UP POPUP
+===================================================== -->
+
+<div id="levelUpPopup"
+     class="level-up-popup">
+
+    <div>
+        ⭐ LEVEL UP! ⭐
+    </div>
+
+    <span>
+        You reached a new level!
+    </span>
+
+</div>
+
+
+
+<!-- =====================================================
+     LOGIN / SIGN UP MODAL
+===================================================== -->
+
+<div id="authModal"
+     class="auth-modal">
+
+    <div class="auth-box">
+
+
+        <button class="close-auth"
+                onclick="closeAuth()">
+
+            ×
+
+        </button>
+
+
+        <div class="auth-logo">
+            ⚡
+        </div>
+
+
+        <h2 id="authTitle">
+            WELCOME BACK
+        </h2>
+
+        <p id="authSubtitle">
+            Login to continue your TechnoQuest.
+        </p>
+
+
+        <!-- LOGIN -->
+
+        <form id="loginForm"
+              onsubmit="loginUser(event)">
+
+            <div class="input-group">
+
+                <label>
+                    USERNAME
+                </label>
+
+                <input id="loginUsername"
+                       type="text"
+                       placeholder="Enter username"
+                       required>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>
+                    PASSWORD
+                </label>
+
+                <input id="loginPassword"
+                       type="password"
+                       placeholder="Enter password"
+                       required>
+
+            </div>
+
+
+            <button class="auth-submit"
+                    type="submit">
+
+                LOGIN
+
+            </button>
+
+        </form>
+
+
+        <!-- SIGN UP -->
+
+        <form id="signupForm"
+              class="hidden"
+              onsubmit="signupUser(event)">
+
+            <div class="input-group">
+
+                <label>
+                    USERNAME
+                </label>
+
+                <input id="signupUsername"
+                       type="text"
+                       placeholder="Create username"
+                       required>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>
+                    PASSWORD
+                </label>
+
+                <input id="signupPassword"
+                       type="password"
+                       placeholder="Create password"
+                       required>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>
+                    CONFIRM PASSWORD
+                </label>
+
+                <input id="signupConfirm"
+                       type="password"
+                       placeholder="Confirm password"
+                       required>
+
+            </div>
+
+
+            <button class="auth-submit"
+                    type="submit">
+
+                CREATE ACCOUNT
+
+            </button>
+
+        </form>
+
+
+        <div id="authMessage"
+             class="auth-message">
+
+        </div>
+
+
+        <div class="auth-switch">
+
+            <span id="switchText">
+                Don't have an account?
+            </span>
+
+            <button onclick="switchAuth()"
+                    id="switchButton">
+
+                SIGN UP
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     AUTH JAVASCRIPT
+===================================================== -->
 
 <script>
 
-/* ==================================================
-   COMPUTER LITERACY QUESTIONS
-================================================== */
+let authMode = "login";
 
-const questions = {
 
-    easy: [
+function openAuth(mode) {
 
-        {
-            q: "What does CPU stand for?",
-            a: [
-                "Central Processing Unit",
-                "Computer Personal Unit",
-                "Central Program Utility",
-                "Computer Processing User"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "Which device is mainly used to type text?",
-            a: [
-                "Monitor",
-                "Keyboard",
-                "Speaker",
-                "Printer"
-            ],
-            correct: 1
-        },
-
-        {
-            q: "Which device displays information from a computer?",
-            a: [
-                "Keyboard",
-                "Mouse",
-                "Monitor",
-                "Microphone"
-            ],
-            correct: 2
-        },
-
-        {
-            q: "Which one is an operating system?",
-            a: [
-                "Windows",
-                "Google",
-                "YouTube",
-                "Facebook"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "What device is commonly used to move the pointer?",
-            a: [
-                "Mouse",
-                "Printer",
-                "Speaker",
-                "Scanner"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "Which one is an example of computer storage?",
-            a: [
-                "SSD",
-                "Monitor",
-                "Keyboard",
-                "Speaker"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "What does USB commonly allow you to do?",
-            a: [
-                "Connect devices",
-                "Increase screen size",
-                "Create electricity",
-                "Print without a printer"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "Which application is commonly used to browse websites?",
-            a: [
-                "Web browser",
-                "Calculator",
-                "File manager",
-                "Paint"
-            ],
-            correct: 0
-        }
-
-    ],
-
-
-    medium: [
-
-        {
-            q: "What is RAM mainly used for?",
-            a: [
-                "Temporary working memory",
-                "Permanent file storage",
-                "Printing documents",
-                "Displaying images"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "Which file extension is commonly used for a Microsoft Word document?",
-            a: [
-                ".jpg",
-                ".mp3",
-                ".docx",
-                ".exe"
-            ],
-            correct: 2
-        },
-
-        {
-            q: "What is the main purpose of an operating system?",
-            a: [
-                "Manage computer hardware and software",
-                "Only browse websites",
-                "Only play music",
-                "Only create images"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "What does Wi-Fi allow devices to do?",
-            a: [
-                "Connect wirelessly to a network",
-                "Increase RAM",
-                "Charge automatically",
-                "Replace the CPU"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "Which shortcut is commonly used to copy selected text?",
-            a: [
-                "Ctrl + V",
-                "Ctrl + C",
-                "Ctrl + X",
-                "Ctrl + Z"
-            ],
-            correct: 1
-        },
-
-        {
-            q: "Which shortcut is commonly used to paste?",
-            a: [
-                "Ctrl + P",
-                "Ctrl + C",
-                "Ctrl + V",
-                "Ctrl + S"
-            ],
-            correct: 2
-        },
-
-        {
-            q: "What does a firewall help protect against?",
-            a: [
-                "Unauthorized network access",
-                "Low battery",
-                "Broken keyboards",
-                "Low screen brightness"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "Which storage device generally has no moving mechanical parts?",
-            a: [
-                "SSD",
-                "DVD",
-                "Floppy disk",
-                "Tape drive"
-            ],
-            correct: 0
-        }
-
-    ],
-
-
-    hard: [
-
-        {
-            q: "What does DNS primarily do?",
-            a: [
-                "Translates domain names into IP addresses",
-                "Stores passwords",
-                "Controls screen brightness",
-                "Compresses images"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "What is phishing?",
-            a: [
-                "A deceptive attempt to obtain sensitive information",
-                "A type of printer",
-                "A file compression method",
-                "A computer upgrade"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "What is malware?",
-            a: [
-                "Malicious software",
-                "A computer monitor",
-                "A type of keyboard",
-                "A programming language"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "What is two-factor authentication?",
-            a: [
-                "Using two verification methods",
-                "Using two computers",
-                "Having two passwords only",
-                "Installing two operating systems"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "What does an IP address identify?",
-            a: [
-                "A device or network interface on a network",
-                "A keyboard key",
-                "A file extension",
-                "A monitor type"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "What is cloud storage?",
-            a: [
-                "Storing data on remote internet-connected servers",
-                "Saving files only on RAM",
-                "Saving files inside a monitor",
-                "A type of USB cable"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "What does encryption do?",
-            a: [
-                "Converts information into a protected encoded form",
-                "Deletes all files",
-                "Makes a computer faster",
-                "Increases screen resolution"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "Which practice is safest when receiving an unexpected email link?",
-            a: [
-                "Verify the sender and link before opening it",
-                "Open it immediately",
-                "Forward it to everyone",
-                "Enter your password first"
-            ],
-            correct: 0
-        }
-
-    ]
-
-};
-
-
-/* ==================================================
-   TECH FIXER QUESTIONS
-================================================== */
-
-const fixerQuestions = {
-
-    easy: [
-
-        {
-            q: "Your computer has no sound. What should you check first?",
-            a: [
-                "Volume settings",
-                "Keyboard color",
-                "Wallpaper",
-                "Screen resolution"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "The mouse is not moving. What should you check?",
-            a: [
-                "Mouse connection or battery",
-                "Printer ink",
-                "Monitor brightness",
-                "Wallpaper"
-            ],
-            correct: 0
-        }
-
-    ],
-
-    medium: [
-
-        {
-            q: "A program stops responding. What is a reasonable first step?",
-            a: [
-                "Wait briefly or close the unresponsive program",
-                "Delete the operating system",
-                "Remove the CPU",
-                "Format the computer immediately"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "Your storage is almost full. What should you do?",
-            a: [
-                "Remove unnecessary files or move them to suitable storage",
-                "Delete system files randomly",
-                "Turn off the monitor",
-                "Change the keyboard"
-            ],
-            correct: 0
-        }
-
-    ],
-
-    hard: [
-
-        {
-            q: "A computer may be infected with malware. What is a sensible step?",
-            a: [
-                "Run a trusted security scan",
-                "Share passwords",
-                "Disable all security permanently",
-                "Download unknown programs"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "A website connection is unsafe. What should you avoid doing?",
-            a: [
-                "Entering sensitive information",
-                "Closing the page",
-                "Checking the website address",
-                "Using a trusted connection"
-            ],
-            correct: 0
-        }
-
-    ]
-
-};
-
-
-/* ==================================================
-   FILE MASTER QUESTIONS
-================================================== */
-
-const fileQuestions = {
-
-    easy: [
-
-        {
-            q: "Which extension is commonly used for an image?",
-            a: [
-                ".jpg",
-                ".mp3",
-                ".txt",
-                ".exe"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "Which extension is commonly used for audio?",
-            a: [
-                ".mp3",
-                ".jpg",
-                ".png",
-                ".html"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "What is a folder used for?",
-            a: [
-                "Organizing files",
-                "Increasing RAM",
-                "Cooling the CPU",
-                "Connecting Wi-Fi"
-            ],
-            correct: 0
-        }
-
-    ],
-
-    medium: [
-
-        {
-            q: "Which extension is commonly associated with a webpage?",
-            a: [
-                ".html",
-                ".mp3",
-                ".jpg",
-                ".zip"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "What does a ZIP file usually contain?",
-            a: [
-                "Compressed files",
-                "Only videos",
-                "Only images",
-                "Only programs"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "Which action creates another copy of a file?",
-            a: [
-                "Copy",
-                "Delete",
-                "Rename",
-                "Format"
-            ],
-            correct: 0
-        }
-
-    ],
-
-    hard: [
-
-        {
-            q: "Why is organizing files into folders useful?",
-            a: [
-                "It makes files easier to locate and manage",
-                "It increases CPU speed",
-                "It increases monitor resolution",
-                "It automatically removes malware"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "What is a file extension mainly used for?",
-            a: [
-                "Indicating the file type or format",
-                "Increasing storage",
-                "Protecting the keyboard",
-                "Connecting to Wi-Fi"
-            ],
-            correct: 0
-        }
-
-    ]
-
-};
-
-
-/* ==================================================
-   CYBER DEFENDER QUESTIONS
-================================================== */
-
-const cyberQuestions = {
-
-    easy: [
-
-        {
-            q: "Which password is stronger?",
-            a: [
-                "123456",
-                "password",
-                "MyName123",
-                "A long unique password"
-            ],
-            correct: 3
-        },
-
-        {
-            q: "What should you do with a suspicious link?",
-            a: [
-                "Open it immediately",
-                "Verify it before opening",
-                "Send your password",
-                "Share it publicly"
-            ],
-            correct: 1
-        }
-
-    ],
-
-    medium: [
-
-        {
-            q: "What is phishing designed to do?",
-            a: [
-                "Trick people into revealing information",
-                "Improve computer speed",
-                "Repair hardware",
-                "Organize folders"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "Why should software be updated?",
-            a: [
-                "Updates can fix bugs and security vulnerabilities",
-                "Updates always delete files",
-                "Updates remove the keyboard",
-                "Updates turn off Wi-Fi"
-            ],
-            correct: 0
-        }
-
-    ],
-
-    hard: [
-
-        {
-            q: "What is the safest response to a suspicious login request?",
-            a: [
-                "Verify it through an official source",
-                "Give the password",
-                "Click every link",
-                "Send your verification code"
-            ],
-            correct: 0
-        },
-
-        {
-            q: "What does two-factor authentication add?",
-            a: [
-                "An additional verification step",
-                "A second monitor",
-                "More storage",
-                "A faster processor"
-            ],
-            correct: 0
-        }
-
-    ]
-
-};
-
-
-/* ==================================================
-   GAME MODE INFORMATION
-================================================== */
-
-const modeInfo = {
-
-    boss: {
-        name: "BOSS BATTLE",
-        icon: "🦠",
-        boss: "COMPUTER VIRUS"
-    },
-
-    speed: {
-        name: "SPEED TYPE",
-        icon: "⚡",
-        boss: "TIME ATTACK"
-    },
-
-    fixer: {
-        name: "TECH FIXER",
-        icon: "🛠️",
-        boss: "SYSTEM FAILURE"
-    },
-
-    challenge: {
-        name: "COMPUTER CHALLENGE",
-        icon: "🧠",
-        boss: "KNOWLEDGE CORE"
-    },
-
-    files: {
-        name: "FILE MASTER",
-        icon: "💾",
-        boss: "DATA GUARDIAN"
-    },
-
-    cyber: {
-        name: "CYBER DEFENDER",
-        icon: "🔐",
-        boss: "SECURITY BREACH"
-    }
-
-};
-
-
-/* ==================================================
-   VARIABLES
-================================================== */
-
-let currentMode = "";
-
-let currentDifficulty = "";
-
-let currentQuestions = [];
-
-let questionIndex = 0;
-
-let score = 0;
-
-let bossHP = 100;
-
-let maxBossHP = 100;
-
-let timer = 60;
-
-let timerInterval = null;
-
-let playerLevel = 1;
-
-let playerXP = 0;
-
-let xpRequirement = 100;
-
-let lastXP = 0;
-
-
-/* ==================================================
-   ELEMENTS
-================================================== */
-
-const screens =
-    document.querySelectorAll(".screen");
-
-const levelText =
-    document.getElementById("levelText");
-
-const xpText =
-    document.getElementById("xpText");
-
-const xpProgress =
-    document.getElementById("xpProgress");
-
-const difficultyTitle =
-    document.getElementById("difficultyTitle");
-
-const gameModeTitle =
-    document.getElementById("gameModeTitle");
-
-const bossIcon =
-    document.getElementById("bossIcon");
-
-const bossName =
-    document.getElementById("bossName");
-
-const bossDescription =
-    document.getElementById("bossDescription");
-
-const bossHPText =
-    document.getElementById("bossHPText");
-
-const bossHPBar =
-    document.getElementById("bossHPBar");
-
-const timerBox =
-    document.getElementById("timerBox");
-
-const timerText =
-    document.getElementById("timer");
-
-const scoreText =
-    document.getElementById("score");
-
-const questionNumber =
-    document.getElementById("questionNumber");
-
-const questionText =
-    document.getElementById("question");
-
-const answers =
-    document.getElementById("answers");
-
-const resultMessage =
-    document.getElementById("resultMessage");
-
-const nextButton =
-    document.getElementById("nextButton");
-
-
-/* ==================================================
-   SCREEN NAVIGATION
-================================================== */
-
-function showScreen(id) {
-
-    screens.forEach(screen => {
-
-        screen.classList.remove("active");
-
-    });
+    authMode = mode;
 
     document
-        .getElementById(id)
-        .classList.add("active");
+        .getElementById("authModal")
+        .classList.add("show");
 
-    window.scrollTo(0, 0);
-
-}
-
-
-/* ==================================================
-   NORMAL BUTTON NAVIGATION
-================================================== */
-
-document.addEventListener("click", event => {
-
-    const button =
-        event.target.closest("[data-go]");
-
-    if (!button) return;
-
-    stopTimer();
-
-    showScreen(button.dataset.go);
-
-});
-
-
-/* ==================================================
-   SELECT GAME MODE
-================================================== */
-
-document
-    .querySelectorAll(".modeCard")
-    .forEach(card => {
-
-        card.addEventListener("click", () => {
-
-            currentMode =
-                card.dataset.mode;
-
-            difficultyTitle.textContent =
-                modeInfo[currentMode].name +
-                " — SELECT DIFFICULTY";
-
-            showScreen("difficulty");
-
-        });
-
-    });
-
-
-/* ==================================================
-   SELECT DIFFICULTY
-================================================== */
-
-document
-    .querySelectorAll(".difficultyCard")
-    .forEach(card => {
-
-        card.addEventListener("click", () => {
-
-            currentDifficulty =
-                card.dataset.difficulty;
-
-            startGame();
-
-        });
-
-    });
-
-
-/* ==================================================
-   GET QUESTIONS
-================================================== */
-
-function getQuestions() {
-
-    if (currentMode === "fixer") {
-
-        return fixerQuestions[currentDifficulty];
-
-    }
-
-    if (currentMode === "files") {
-
-        return fileQuestions[currentDifficulty];
-
-    }
-
-    if (currentMode === "cyber") {
-
-        return cyberQuestions[currentDifficulty];
-
-    }
-
-    return questions[currentDifficulty];
+    updateAuthMode();
 
 }
 
 
-/* ==================================================
-   START GAME
-================================================== */
+function closeAuth() {
 
-function startGame() {
-
-    score = 0;
-
-    questionIndex = 0;
-
-    lastXP = 0;
-
-    currentQuestions =
-        shuffle(
-            [...getQuestions()]
-        );
-
-
-    /*
-        Boss HP depends on difficulty.
-    */
-
-    if (currentDifficulty === "easy") {
-
-        maxBossHP = 100;
-
-    }
-
-    else if (currentDifficulty === "medium") {
-
-        maxBossHP = 200;
-
-    }
-
-    else {
-
-        maxBossHP = 300;
-
-    }
-
-
-    bossHP = maxBossHP;
-
-
-    /*
-        SPEED TYPE uses a timer.
-    */
-
-    if (currentMode === "speed") {
-
-        timerBox.classList.remove("hidden");
-
-        timer = 60;
-
-        startTimer();
-
-    }
-
-    else {
-
-        timerBox.classList.add("hidden");
-
-    }
-
-
-    gameModeTitle.textContent =
-        modeInfo[currentMode].name;
-
-
-    bossIcon.textContent =
-        modeInfo[currentMode].icon;
-
-
-    bossName.textContent =
-        modeInfo[currentMode].boss;
-
-
-    bossDescription.textContent =
-        getModeDescription();
-
-
-    updateGameUI();
-
-    showScreen("game");
-
-    loadQuestion();
+    document
+        .getElementById("authModal")
+        .classList.remove("show");
 
 }
 
 
-/* ==================================================
-   MODE DESCRIPTION
-================================================== */
+function switchAuth() {
 
-function getModeDescription() {
+    if (authMode === "login") {
 
-    if (currentMode === "boss") {
+        authMode = "signup";
 
-        return "Answer correctly to damage the Computer Virus.";
+    } else {
 
-    }
-
-    if (currentMode === "speed") {
-
-        return "Answer as many questions as possible before time runs out.";
+        authMode = "login";
 
     }
 
-    if (currentMode === "fixer") {
-
-        return "Diagnose the problem and choose the correct solution.";
-
-    }
-
-    if (currentMode === "files") {
-
-        return "Master files, extensions, folders, and storage.";
-
-    }
-
-    if (currentMode === "cyber") {
-
-        return "Protect the system from digital security threats.";
-
-    }
-
-    return "Test your overall computer-literacy knowledge.";
+    updateAuthMode();
 
 }
 
 
-/* ==================================================
-   LOAD QUESTION
-================================================== */
+function updateAuthMode() {
 
-function loadQuestion() {
+    const loginForm =
+        document.getElementById("loginForm");
 
-    /*
-        When questions run out,
-        shuffle them again.
-    */
+    const signupForm =
+        document.getElementById("signupForm");
 
-    if (
-        questionIndex >=
-        currentQuestions.length
-    ) {
+    const title =
+        document.getElementById("authTitle");
 
-        currentQuestions =
-            shuffle(
-                [...getQuestions()]
-            );
+    const subtitle =
+        document.getElementById("authSubtitle");
 
-        questionIndex = 0;
+    const switchText =
+        document.getElementById("switchText");
 
-    }
+    const switchButton =
+        document.getElementById("switchButton");
 
 
-    const current =
-        currentQuestions[questionIndex];
+    document.getElementById("authMessage").textContent = "";
 
 
-    questionNumber.textContent =
-        "QUESTION " +
-        (questionIndex + 1);
+    if (authMode === "login") {
 
+        loginForm.classList.remove("hidden");
 
-    questionText.textContent =
-        current.q;
+        signupForm.classList.add("hidden");
 
+        title.textContent =
+            "WELCOME BACK";
 
-    answers.innerHTML = "";
+        subtitle.textContent =
+            "Login to continue your TechnoQuest.";
 
-    resultMessage.textContent = "";
+        switchText.textContent =
+            "Don't have an account?";
 
-    nextButton.classList.add("hidden");
+        switchButton.textContent =
+            "SIGN UP";
 
+    } else {
 
-    current.a.forEach((answer, index) => {
+        loginForm.classList.add("hidden");
 
-        const button =
-            document.createElement("button");
+        signupForm.classList.remove("hidden");
 
-        button.className =
-            "answerButton";
+        title.textContent =
+            "CREATE ACCOUNT";
 
-        button.textContent =
-            answer;
+        subtitle.textContent =
+            "Join TechnoQuest and start your journey.";
 
-        button.addEventListener(
-            "click",
-            () => checkAnswer(
-                index,
-                button,
-                current
-            )
-        );
+        switchText.textContent =
+            "Already have an account?";
 
-        answers.appendChild(button);
-
-    });
-
-}
-
-
-/* ==================================================
-   CHECK ANSWER
-================================================== */
-
-function checkAnswer(
-    selected,
-    selectedButton,
-    current
-) {
-
-    const buttons =
-        document.querySelectorAll(
-            ".answerButton"
-        );
-
-
-    buttons.forEach(button => {
-
-        button.disabled = true;
-
-    });
-
-
-    if (
-        selected ===
-        current.correct
-    ) {
-
-        selectedButton.classList.add(
-            "correct"
-        );
-
-
-        score++;
-
-        /*
-            Correct answer = 20 XP
-        */
-
-        addXP(20);
-
-
-        /*
-            BOSS BATTLE
-            Correct answer deals 20 damage.
-        */
-
-        if (currentMode === "boss") {
-
-            bossHP =
-                Math.max(
-                    0,
-                    bossHP - 20
-                );
-
-            resultMessage.textContent =
-                "⚡ CORRECT! 20 DAMAGE DEALT!";
-
-        }
-
-        else {
-
-            resultMessage.textContent =
-                "✓ CORRECT! +20 XP";
-
-        }
-
-
-        updateGameUI();
-
-
-        /*
-            Boss defeated
-        */
-
-        if (
-            currentMode === "boss" &&
-            bossHP <= 0
-        ) {
-
-            setTimeout(
-                missionSuccess,
-                600
-            );
-
-            return;
-
-        }
-
-
-        /*
-            SPEED MODE
-        */
-
-        if (currentMode === "speed") {
-
-            setTimeout(
-                () => {
-
-                    questionIndex++;
-
-                    loadQuestion();
-
-                },
-                500
-            );
-
-            return;
-
-        }
-
-    }
-
-    else {
-
-        selectedButton.classList.add(
-            "wrong"
-        );
-
-
-        buttons[
-            current.correct
-        ].classList.add(
-            "correct"
-        );
-
-
-        resultMessage.textContent =
-            "✖ WRONG ANSWER";
-
-    }
-
-
-    questionIndex++;
-
-    nextButton.classList.remove("hidden");
-
-}
-
-
-/* ==================================================
-   NEXT QUESTION
-================================================== */
-
-nextButton.addEventListener(
-    "click",
-    loadQuestion
-);
-
-
-/* ==================================================
-   TIMER
-================================================== */
-
-function startTimer() {
-
-    stopTimer();
-
-    timerInterval =
-        setInterval(() => {
-
-            timer--;
-
-            timerText.textContent =
-                timer;
-
-
-            if (timer <= 0) {
-
-                stopTimer();
-
-                missionSuccess();
-
-            }
-
-        }, 1000);
-
-}
-
-
-function stopTimer() {
-
-    if (timerInterval) {
-
-        clearInterval(timerInterval);
-
-        timerInterval = null;
+        switchButton.textContent =
+            "LOGIN";
 
     }
 
 }
 
 
-/* ==================================================
-   UPDATE GAME UI
-================================================== */
+function signupUser(event) {
 
-function updateGameUI() {
-
-    scoreText.textContent =
-        score;
+    event.preventDefault();
 
 
-    bossHPText.textContent =
-        "BOSS HP: " +
-        bossHP +
-        " / " +
-        maxBossHP;
+    const username =
+        document
+        .getElementById("signupUsername")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("signupPassword")
+        .value;
+
+    const confirm =
+        document
+        .getElementById("signupConfirm")
+        .value;
 
 
-    const percentage =
-        (bossHP / maxBossHP) * 100;
+    const message =
+        document.getElementById("authMessage");
 
 
-    bossHPBar.style.width =
-        percentage + "%";
+    if (password !== confirm) {
 
-}
+        message.textContent =
+            "Passwords do not match.";
 
+        message.className =
+            "auth-message error";
 
-/* ==================================================
-   SUCCESS
-================================================== */
-
-function missionSuccess() {
-
-    stopTimer();
+        return;
+    }
 
 
-    /*
-        Completion bonus
-    */
+    localStorage.setItem(
+        "technoquestUser",
+        username
+    );
 
-    const bonus = 50;
-
-    addXP(bonus);
-
-
-    document.getElementById(
-        "finalScore"
-    ).textContent =
-        score;
-
-
-    document.getElementById(
-        "finalXP"
-    ).textContent =
-        lastXP;
-
-
-    document.getElementById(
-        "successMessage"
-    ).textContent =
-        modeInfo[currentMode].name +
-        " completed successfully!";
-
-
-    showScreen("success");
-
-}
-
-
-/* ==================================================
-   FAILED
-================================================== */
-
-function missionFailed() {
-
-    stopTimer();
-
-    document.getElementById(
-        "failedScore"
-    ).textContent =
-        score;
-
-    document.getElementById(
-        "failedXP"
-    ).textContent =
-        lastXP;
-
-    showScreen("failed");
-
-}
-
-
-/* ==================================================
-   RETRY
-================================================== */
-
-document
-    .getElementById("retryButton")
-    .addEventListener(
-        "click",
-        startGame
+    localStorage.setItem(
+        "technoquestPassword",
+        password
     );
 
 
-/* ==================================================
-   XP SYSTEM
-================================================== */
+    message.textContent =
+        "Account created! You can now login.";
 
-function addXP(amount) {
-
-    lastXP += amount;
-
-    playerXP += amount;
-
-
-    /*
-        Level requirements:
-
-        Level 1 = 100
-        Level 2 = 105
-        Level 3 = 110
-        Level 4 = 115
-        etc.
-    */
-
-    while (
-        playerXP >=
-        xpRequirement
-    ) {
-
-        playerXP -=
-            xpRequirement;
-
-        playerLevel++;
-
-
-        xpRequirement =
-            100 +
-            ((playerLevel - 1) * 5);
-
-
-        showLevelUp();
-
-    }
-
-
-    updateXP();
-
-}
-
-
-/* ==================================================
-   UPDATE XP
-================================================== */
-
-function updateXP() {
-
-    levelText.textContent =
-        "LEVEL " +
-        playerLevel;
-
-
-    xpText.textContent =
-        "XP " +
-        playerXP +
-        " / " +
-        xpRequirement;
-
-
-    const percentage =
-        (playerXP / xpRequirement) * 100;
-
-
-    xpProgress.style.width =
-        percentage + "%";
-
-}
-
-
-/* ==================================================
-   LEVEL UP
-================================================== */
-
-function showLevelUp() {
-
-    const popup =
-        document.createElement("div");
-
-    popup.className =
-        "levelUp";
-
-    popup.textContent =
-        "⚡ LEVEL UP! LEVEL " +
-        playerLevel +
-        " ⚡";
-
-    document.body.appendChild(
-        popup
-    );
+    message.className =
+        "auth-message success";
 
 
     setTimeout(() => {
 
-        popup.remove();
+        authMode = "login";
 
-    }, 1500);
+        updateAuthMode();
+
+        document.getElementById("loginUsername").value =
+            username;
+
+    }, 1000);
 
 }
 
 
-/* ==================================================
-   SHUFFLE
-================================================== */
+function loginUser(event) {
 
-function shuffle(array) {
+    event.preventDefault();
 
-    for (
-        let i = array.length - 1;
-        i > 0;
-        i--
+
+    const username =
+        document
+        .getElementById("loginUsername")
+        .value
+        .trim();
+
+    const password =
+        document
+        .getElementById("loginPassword")
+        .value;
+
+
+    const savedUsername =
+        localStorage.getItem(
+            "technoquestUser"
+        );
+
+    const savedPassword =
+        localStorage.getItem(
+            "technoquestPassword"
+        );
+
+
+    const message =
+        document.getElementById("authMessage");
+
+
+    if (
+        username === savedUsername &&
+        password === savedPassword
     ) {
 
-        const j =
-            Math.floor(
-                Math.random() *
-                (i + 1)
-            );
+        message.textContent =
+            "Login successful! Welcome to TechnoQuest.";
+
+        message.className =
+            "auth-message success";
 
 
-        [
-            array[i],
-            array[j]
-        ] =
-        [
-            array[j],
-            array[i]
-        ];
+        setTimeout(() => {
+
+            closeAuth();
+
+        }, 1000);
+
+    } else {
+
+        message.textContent =
+            "Incorrect username or password.";
+
+        message.className =
+            "auth-message error";
 
     }
 
-    return array;
-
 }
 
 
-/* ==================================================
-   INITIALIZE
-================================================== */
+// Close modal when clicking outside
 
-updateXP();
+document
+    .getElementById("authModal")
+    .addEventListener("click", function(event) {
+
+        if (event.target === this) {
+
+            closeAuth();
+
+        }
+
+    });
 
 </script>
 
+
+<!-- YOUR GAME JAVASCRIPT -->
+
 <script src="script.js?v=2"></script>
+
 </body>
 </html>
