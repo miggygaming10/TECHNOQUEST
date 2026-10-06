@@ -1,1216 +1,354 @@
-// =====================================================
-// TECHNOQUEST
-// =====================================================
+// ===============================
+// TECHNOQUEST GAME
+// ===============================
 
+const player = document.getElementById("player");
 
-// =====================================================
-// GAME ELEMENTS
-// =====================================================
-
-const game = document.getElementById("game");
-
-const world = document.getElementById("world");
-
-const playerElement =
-    document.getElementById("player");
-
-const character =
-    document.querySelector(".character");
-
-
-// =====================================================
-// PLAYER
-// =====================================================
-
-const player = {
-
-    x: 700,
-
-    y: 500,
-
-    speed: 4
-
-};
-
-
-// =====================================================
-// JOYSTICK
-// =====================================================
-
-const joystickBase =
-    document.getElementById("joystickBase");
-
-const joystickStick =
-    document.getElementById("joystickStick");
-
-
-let joystickActive = false;
-
-let joystickX = 0;
-
-let joystickY = 0;
-
-
-// =====================================================
-// JOYSTICK START
-// =====================================================
-
-joystickBase.addEventListener(
-    "pointerdown",
-    function(event) {
-
-        joystickActive = true;
-
-        joystickBase.setPointerCapture(
-            event.pointerId
-        );
-
-        updateJoystick(event);
-
-    }
-);
-
-
-// =====================================================
-// JOYSTICK MOVE
-// =====================================================
-
-joystickBase.addEventListener(
-    "pointermove",
-    function(event) {
-
-        if (!joystickActive) return;
-
-        updateJoystick(event);
-
-    }
-);
-
-
-// =====================================================
-// JOYSTICK RELEASE
-// =====================================================
-
-joystickBase.addEventListener(
-    "pointerup",
-    resetJoystick
-);
-
-joystickBase.addEventListener(
-    "pointercancel",
-    resetJoystick
-);
-
-
-// =====================================================
-// UPDATE JOYSTICK
-// =====================================================
-
-function updateJoystick(event) {
-
-    const rect =
-        joystickBase.getBoundingClientRect();
-
-
-    const centerX =
-        rect.left +
-        rect.width / 2;
-
-
-    const centerY =
-        rect.top +
-        rect.height / 2;
-
-
-    let dx =
-        event.clientX -
-        centerX;
-
-
-    let dy =
-        event.clientY -
-        centerY;
-
-
-    const maxDistance =
-        rect.width / 2 - 32;
-
-
-    const distance =
-        Math.sqrt(
-            dx * dx +
-            dy * dy
-        );
-
-
-    if (distance > maxDistance) {
-
-        dx =
-            dx /
-            distance *
-            maxDistance;
-
-
-        dy =
-            dy /
-            distance *
-            maxDistance;
-
-    }
-
-
-    joystickX =
-        dx / maxDistance;
-
-
-    joystickY =
-        dy / maxDistance;
-
-
-    joystickStick.style.left =
-        `calc(50% + ${dx}px)`;
-
-
-    joystickStick.style.top =
-        `calc(50% + ${dy}px)`;
-
-}
-
-
-// =====================================================
-// RESET JOYSTICK
-// =====================================================
-
-function resetJoystick() {
-
-    joystickActive = false;
-
-    joystickX = 0;
-
-    joystickY = 0;
-
-
-    joystickStick.style.left =
-        "50%";
-
-
-    joystickStick.style.top =
-        "50%";
-
-}
-
-
-// =====================================================
-// KEYBOARD
-// =====================================================
-
-const keys = {};
-
-
-document.addEventListener(
-    "keydown",
-    function(event) {
-
-        keys[event.key.toLowerCase()] = true;
-
-    }
-);
-
-
-document.addEventListener(
-    "keyup",
-    function(event) {
-
-        keys[event.key.toLowerCase()] = false;
-
-    }
-);
-
-
-// =====================================================
-// INTERACTABLE OBJECTS
-// =====================================================
-
-const objects =
-    document.querySelectorAll(".object");
-
-
-let nearbyObject = null;
-
-
-// =====================================================
-// QUESTIONS
-// =====================================================
-
-const questions = [
-
-    {
-        question:
-            "Which component is known as the brain of the computer?",
-
-        answers: [
-            "RAM",
-            "CPU",
-            "Monitor",
-            "Keyboard"
-        ],
-
-        correct: 1
-    },
-
-
-    {
-        question:
-            "Which device is used to display information?",
-
-        answers: [
-            "Mouse",
-            "Keyboard",
-            "Monitor",
-            "Microphone"
-        ],
-
-        correct: 2
-    },
-
-
-    {
-        question:
-            "Which of these is an input device?",
-
-        answers: [
-            "Monitor",
-            "Speaker",
-            "Keyboard",
-            "Projector"
-        ],
-
-        correct: 2
-    },
-
-
-    {
-        question:
-            "What does Ctrl + C usually do?",
-
-        answers: [
-            "Paste",
-            "Copy",
-            "Undo",
-            "Save"
-        ],
-
-        correct: 1
-    },
-
-
-    {
-        question:
-            "What does Ctrl + V usually do?",
-
-        answers: [
-            "Paste",
-            "Copy",
-            "Delete",
-            "Undo"
-        ],
-
-        correct: 0
-    },
-
-
-    {
-        question:
-            "Which file extension is commonly used for images?",
-
-        answers: [
-            ".jpg",
-            ".exe",
-            ".txt",
-            ".mp3"
-        ],
-
-        correct: 0
-    },
-
-
-    {
-        question:
-            "Which software is used to access websites?",
-
-        answers: [
-            "Web browser",
-            "Calculator",
-            "File manager",
-            "Paint"
-        ],
-
-        correct: 0
-    },
-
-
-    {
-        question:
-            "Which password is strongest?",
-
-        answers: [
-            "password123",
-            "john2008",
-            "123456",
-            "T!9q#Lm2@xP"
-        ],
-
-        correct: 3
-    }
-
-];
-
-
-// =====================================================
-// QUIZ VARIABLES
-// =====================================================
-
-let currentQuestion = 0;
-
-let correctAnswers = 0;
-
-let questionAnswered = false;
-
-
-// =====================================================
-// PLAYER XP
-// =====================================================
+let playerX = 500;
+let playerY = 500;
 
 let level = 1;
-
 let xp = 0;
+let neededXP = 100;
+
+const speed = 25;
 
 
-// =====================================================
-// GAME LOOP
-// =====================================================
+// ===============================
+// PLAYER MOVEMENT
+// ===============================
 
-function gameLoop() {
+function updatePlayer() {
 
-    let moveX = joystickX;
-
-    let moveY = joystickY;
-
-
-    // ---------------------------------------------
-    // KEYBOARD
-    // ---------------------------------------------
-
-    if (
-        keys["w"] ||
-        keys["arrowup"]
-    ) {
-
-        moveY = -1;
-
-    }
-
-
-    if (
-        keys["s"] ||
-        keys["arrowdown"]
-    ) {
-
-        moveY = 1;
-
-    }
-
-
-    if (
-        keys["a"] ||
-        keys["arrowleft"]
-    ) {
-
-        moveX = -1;
-
-    }
-
-
-    if (
-        keys["d"] ||
-        keys["arrowright"]
-    ) {
-
-        moveX = 1;
-
-    }
-
-
-    // ---------------------------------------------
-    // MOVEMENT
-    // ---------------------------------------------
-
-    const movementLength =
-        Math.sqrt(
-            moveX * moveX +
-            moveY * moveY
-        );
-
-
-    if (movementLength > 0) {
-
-        if (movementLength > 1) {
-
-            moveX /=
-                movementLength;
-
-            moveY /=
-                movementLength;
-
-        }
-
-
-        player.x +=
-            moveX *
-            player.speed;
-
-
-        player.y +=
-            moveY *
-            player.speed;
-
-
-        character.classList.add(
-            "walking"
-        );
-
-    } else {
-
-        character.classList.remove(
-            "walking"
-        );
-
-    }
-
-
-    // ---------------------------------------------
-    // WORLD BOUNDARIES
-    // ---------------------------------------------
-
-    player.x =
-        Math.max(
-            50,
-            Math.min(
-                1350,
-                player.x
-            )
-        );
-
-
-    player.y =
-        Math.max(
-            100,
-            Math.min(
-                930,
-                player.y
-            )
-        );
-
-
-    // ---------------------------------------------
-    // PLAYER POSITION
-    // ---------------------------------------------
-
-    playerElement.style.left =
-        `${player.x - 35}px`;
-
-
-    playerElement.style.top =
-        `${player.y - 70}px`;
-
-
-    // ---------------------------------------------
-    // OBJECT DETECTION
-    // ---------------------------------------------
+    player.style.left = playerX + "px";
+    player.style.top = playerY + "px";
 
     checkNearby();
-
-
-    // ---------------------------------------------
-    // CAMERA
-    // ---------------------------------------------
-
-    updateCamera();
-
-
-    requestAnimationFrame(
-        gameLoop
-    );
-
 }
 
 
-// =====================================================
-// CAMERA
-// =====================================================
+// ===============================
+// MOVEMENT FUNCTIONS
+// ===============================
 
-function updateCamera() {
+function moveUp() {
 
-    const screenWidth =
-        game.clientWidth;
+    playerY -= speed;
 
+    if (playerY < 0) {
+        playerY = 0;
+    }
 
-    const screenHeight =
-        game.clientHeight;
-
-
-    let cameraX =
-        screenWidth / 2 -
-        player.x;
-
-
-    let cameraY =
-        screenHeight / 2 -
-        player.y;
-
-
-    const worldWidth =
-        1400;
-
-
-    const worldHeight =
-        1000;
-
-
-    // Keep camera inside world
-
-    cameraX =
-        Math.min(
-            0,
-            Math.max(
-                screenWidth -
-                worldWidth,
-                cameraX
-            )
-        );
-
-
-    cameraY =
-        Math.min(
-            0,
-            Math.max(
-                screenHeight -
-                worldHeight,
-                cameraY
-            )
-        );
-
-
-    world.style.transform =
-        `translate(${cameraX}px, ${cameraY}px)`;
-
+    updatePlayer();
 }
 
 
-// =====================================================
-// CHECK NEARBY OBJECT
-// =====================================================
+function moveDown() {
+
+    playerY += speed;
+
+    if (playerY > 900) {
+        playerY = 900;
+    }
+
+    updatePlayer();
+}
+
+
+function moveLeft() {
+
+    playerX -= speed;
+
+    if (playerX < 0) {
+        playerX = 0;
+    }
+
+    updatePlayer();
+}
+
+
+function moveRight() {
+
+    playerX += speed;
+
+    if (playerX > 1340) {
+        playerX = 1340;
+    }
+
+    updatePlayer();
+}
+
+
+// ===============================
+// KEYBOARD CONTROLS
+// ===============================
+
+document.addEventListener("keydown", function(event) {
+
+    if (
+        event.key === "ArrowUp" ||
+        event.key.toLowerCase() === "w"
+    ) {
+        moveUp();
+    }
+
+    if (
+        event.key === "ArrowDown" ||
+        event.key.toLowerCase() === "s"
+    ) {
+        moveDown();
+    }
+
+    if (
+        event.key === "ArrowLeft" ||
+        event.key.toLowerCase() === "a"
+    ) {
+        moveLeft();
+    }
+
+    if (
+        event.key === "ArrowRight" ||
+        event.key.toLowerCase() === "d"
+    ) {
+        moveRight();
+    }
+
+});
+
+
+// ===============================
+// CHECK NEARBY OBJECTS
+// ===============================
 
 function checkNearby() {
 
-    nearbyObject = null;
+    const objects = document.querySelectorAll(".object");
 
+    let nearSomething = false;
 
-    objects.forEach(
-        function(object) {
+    objects.forEach(object => {
 
-            const objectX =
-                object.offsetLeft +
-                object.offsetWidth / 2;
+        const objectX = object.offsetLeft;
+        const objectY = object.offsetTop;
 
-
-            const objectY =
-                object.offsetTop +
-                object.offsetHeight / 2;
-
-
-            const dx =
-                player.x -
-                objectX;
-
-
-            const dy =
-                player.y -
-                objectY;
-
-
-            const distance =
-                Math.sqrt(
-                    dx * dx +
-                    dy * dy
-                );
-
-
-            if (distance < 120) {
-
-                nearbyObject =
-                    object;
-
-                object.classList.add(
-                    "near"
-                );
-
-            } else {
-
-                object.classList.remove(
-                    "near"
-                );
-
-            }
-
-        }
-    );
-
-
-    updateInteraction();
-
-}
-
-
-// =====================================================
-// INTERACTION UI
-// =====================================================
-
-const interaction =
-    document.getElementById(
-        "interaction"
-    );
-
-
-const interactionText =
-    document.getElementById(
-        "interactionText"
-    );
-
-
-function updateInteraction() {
-
-    if (nearbyObject) {
-
-        interaction.style.display =
-            "flex";
-
-
-        interactionText.textContent =
-            nearbyObject.dataset.name;
-
-    } else {
-
-        interaction.style.display =
-            "none";
-
-    }
-
-}
-
-
-// =====================================================
-// INTERACT
-// =====================================================
-
-document
-    .getElementById(
-        "interactButton"
-    )
-    .addEventListener(
-        "click",
-        interact
-    );
-
-
-function interact() {
-
-    if (!nearbyObject) return;
-
-
-    const type =
-        nearbyObject.dataset.type;
-
-
-    if (type === "computer") {
-
-        startQuiz(
-            "Computer Challenge",
-            "🖥️"
+        const distance = Math.sqrt(
+            Math.pow(playerX - objectX, 2) +
+            Math.pow(playerY - objectY, 2)
         );
 
-    }
+        if (distance < 130) {
 
+            nearSomething = true;
 
-    if (type === "chest") {
-
-        startQuiz(
-            "Mystery Chest",
-            "📦"
-        );
-
-    }
-
-
-    if (type === "npc") {
-
-        showMessage(
-            "👨‍🏫 Computer Teacher",
-
-            "Welcome, Tech Warrior! Walk around the world and interact with objects to learn computer literacy."
-        );
-
-    }
-
-
-    if (type === "door") {
-
-        if (level >= 2) {
-
-            showMessage(
-                "🚪 Dungeon Unlocked!",
-
-                "You reached Level 2! The next dungeon is now available."
-            );
+            object.style.transform = "scale(1.15)";
+            object.style.boxShadow =
+                "0 0 30px white";
 
         } else {
 
-            showMessage(
-                "🔒 Dungeon Locked",
+            object.style.transform = "scale(1)";
+            object.style.boxShadow =
+                "0 0 15px rgba(255,255,255,0.5)";
+        }
 
-                "You need to reach Level 2 before entering this dungeon."
-            );
+    });
+
+}
+
+
+// ===============================
+// INTERACT
+// ===============================
+
+function interact() {
+
+    const objects = document.querySelectorAll(".object");
+
+    let closest = null;
+    let closestDistance = Infinity;
+
+    objects.forEach(object => {
+
+        const objectX = object.offsetLeft;
+        const objectY = object.offsetTop;
+
+        const distance = Math.sqrt(
+            Math.pow(playerX - objectX, 2) +
+            Math.pow(playerY - objectY, 2)
+        );
+
+        if (distance < closestDistance) {
+
+            closestDistance = distance;
+            closest = object;
 
         }
+
+    });
+
+
+    if (closestDistance > 150) {
+
+        alert("Move closer to an object!");
+
+        return;
+    }
+
+
+    // COMPUTER
+
+    if (closest.id === "computer") {
+
+        computerQuiz();
+
+    }
+
+
+    // CHEST
+
+    if (closest.id === "chest") {
+
+        chestQuiz();
+
+    }
+
+
+    // TEACHER
+
+    if (closest.id === "teacher") {
+
+        alert(
+            "Teacher: Welcome to TechnoQuest! Explore the map and test your computer skills!"
+        );
+
+    }
+
+
+    // DOOR
+
+    if (closest.id === "door") {
+
+        alert(
+            "Dungeon locked! Complete more challenges to enter."
+        );
 
     }
 
 }
 
 
-// =====================================================
-// START QUIZ
-// =====================================================
+// ===============================
+// COMPUTER QUIZ
+// ===============================
 
-function startQuiz(
-    title,
-    icon
-) {
+function computerQuiz() {
 
-    currentQuestion = 0;
-
-    correctAnswers = 0;
-
-
-    document.getElementById(
-        "questionTitle"
-    ).textContent =
-        title;
-
-
-    document.getElementById(
-        "questionIcon"
-    ).textContent =
-        icon;
-
-
-    document.getElementById(
-        "questionScreen"
-    ).style.display =
-        "flex";
-
-
-    loadQuestion();
-
-}
-
-
-// =====================================================
-// LOAD QUESTION
-// =====================================================
-
-function loadQuestion() {
-
-    questionAnswered = false;
-
-
-    const question =
-        questions[currentQuestion];
-
-
-    document.getElementById(
-        "questionCounter"
-    ).textContent =
-        `Question ${currentQuestion + 1} / ${questions.length}`;
-
-
-    document.getElementById(
-        "questionText"
-    ).textContent =
-        question.question;
-
-
-    const answers =
-        document.getElementById(
-            "answers"
-        );
-
-
-    answers.innerHTML = "";
-
-
-    document.getElementById(
-        "feedback"
-    ).textContent =
-        "";
-
-
-    document.getElementById(
-        "nextButton"
-    ).style.display =
-        "none";
-
-
-    question.answers.forEach(
-        function(answer, index) {
-
-            const button =
-                document.createElement(
-                    "button"
-                );
-
-
-            button.className =
-                "answer";
-
-
-            button.textContent =
-                answer;
-
-
-            button.addEventListener(
-                "click",
-                function() {
-
-                    answerQuestion(
-                        index,
-                        button
-                    );
-
-                }
-            );
-
-
-            answers.appendChild(
-                button
-            );
-
-        }
-    );
-
-}
-
-
-// =====================================================
-// ANSWER QUESTION
-// =====================================================
-
-function answerQuestion(
-    selected,
-    button
-) {
-
-    if (questionAnswered) return;
-
-
-    questionAnswered = true;
-
-
-    const question =
-        questions[currentQuestion];
-
-
-    const buttons =
-        document.querySelectorAll(
-            ".answer"
-        );
-
-
-    buttons.forEach(
-        btn => {
-            btn.disabled = true;
-        }
+    const answer = prompt(
+        "COMPUTER QUIZ\n\n" +
+        "What does CPU stand for?\n\n" +
+        "A. Central Processing Unit\n" +
+        "B. Computer Personal Unit\n" +
+        "C. Central Program Utility"
     );
 
 
-    if (
-        selected ===
-        question.correct
-    ) {
-
-        button.classList.add(
-            "correct"
-        );
+    if (answer === null) {
+        return;
+    }
 
 
-        document.getElementById(
-            "feedback"
-        ).textContent =
-            "✅ Correct! +20 XP";
+    if (answer.toUpperCase() === "A") {
 
+        alert("CORRECT! +25 XP");
 
-        document.getElementById(
-            "feedback"
-        ).style.color =
-            "#22c55e";
-
-
-        correctAnswers++;
-
-
-        addXP(20);
+        addXP(25);
 
     } else {
 
-        button.classList.add(
-            "wrong"
+        alert(
+            "Incorrect!\n\n" +
+            "The correct answer is A."
         );
-
-
-        buttons[
-            question.correct
-        ].classList.add(
-            "correct"
-        );
-
-
-        document.getElementById(
-            "feedback"
-        ).textContent =
-            "❌ Incorrect! The highlighted answer is correct.";
-
-
-        document.getElementById(
-            "feedback"
-        ).style.color =
-            "#ef4444";
 
     }
 
+}
 
-    document.getElementById(
-        "nextButton"
-    ).style.display =
-        "inline-block";
+
+// ===============================
+// CHEST QUIZ
+// ===============================
+
+function chestQuiz() {
+
+    const answer = prompt(
+        "QUIZ CHEST\n\n" +
+        "Which device is used to type text?\n\n" +
+        "A. Monitor\n" +
+        "B. Keyboard\n" +
+        "C. Speaker"
+    );
+
+
+    if (answer === null) {
+        return;
+    }
+
+
+    if (answer.toUpperCase() === "B") {
+
+        alert("CORRECT! +25 XP");
+
+        addXP(25);
+
+    } else {
+
+        alert(
+            "Incorrect!\n\n" +
+            "The correct answer is B."
+        );
+
+    }
 
 }
 
 
-// =====================================================
-// NEXT QUESTION
-// =====================================================
-
-document
-    .getElementById(
-        "nextButton"
-    )
-    .addEventListener(
-        "click",
-        function() {
-
-            currentQuestion++;
-
-
-            if (
-                currentQuestion >=
-                questions.length
-            ) {
-
-                finishQuiz();
-
-            } else {
-
-                loadQuestion();
-
-            }
-
-        }
-    );
-
-
-// =====================================================
-// FINISH QUIZ
-// =====================================================
-
-function finishQuiz() {
-
-    document.getElementById(
-        "questionScreen"
-    ).style.display =
-        "none";
-
-
-    showMessage(
-        "🏆 Challenge Complete!",
-
-        `You got ${correctAnswers} out of ${questions.length} correct!`
-    );
-
-}
-
-
-// =====================================================
-// XP
-// =====================================================
+// ===============================
+// XP SYSTEM
+// ===============================
 
 function addXP(amount) {
 
     xp += amount;
 
+    while (xp >= neededXP) {
 
-    let needed =
-        100 +
-        ((level - 1) * 5);
-
-
-    while (xp >= needed) {
-
-        xp -= needed;
+        xp -= neededXP;
 
         level++;
 
+        neededXP += 5;
 
-        needed =
-            100 +
-            ((level - 1) * 5);
-
-
-        showMessage(
-            "⭐ LEVEL UP!",
-
-            `Congratulations! You reached Level ${level}!`
+        alert(
+            "LEVEL UP!\n\n" +
+            "You are now Level " + level + "!"
         );
 
     }
 
+    document.getElementById("level").textContent = level;
 
-    updateXP();
+    document.getElementById("xp").textContent = xp;
 
-}
-
-
-// =====================================================
-// UPDATE XP
-// =====================================================
-
-function updateXP() {
-
-    const needed =
-        100 +
-        ((level - 1) * 5);
-
-
-    document.getElementById(
-        "level"
-    ).textContent =
-        level;
-
-
-    document.getElementById(
-        "xp"
-    ).textContent =
-        xp;
-
-
-    document.getElementById(
-        "xpNeeded"
-    ).textContent =
-        needed;
-
-
-    document.getElementById(
-        "xpFill"
-    ).style.width =
-        `${(xp / needed) * 100}%`;
+    document.getElementById("needed").textContent = neededXP;
 
 }
 
 
-// =====================================================
-// MESSAGE
-// =====================================================
+// ===============================
+// START GAME
+// ===============================
 
-function showMessage(
-    title,
-    message
-) {
+updatePlayer();
 
-    document.getElementById(
-        "messageTitle"
-    ).textContent =
-        title;
-
-
-    document.getElementById(
-        "messageText"
-    ).textContent =
-        message;
-
-
-    document.getElementById(
-        "messageScreen"
-    ).style.display =
-        "flex";
-
-}
-
-
-// =====================================================
-// CLOSE MESSAGE
-// =====================================================
-
-document
-    .getElementById(
-        "messageButton"
-    )
-    .addEventListener(
-        "click",
-        function() {
-
-            document.getElementById(
-                "messageScreen"
-            ).style.display =
-                "none";
-
-        }
-    );
-
-
-// =====================================================
-// CLOSE QUESTION
-// =====================================================
-
-document
-    .getElementById(
-        "closeQuestion"
-    )
-    .addEventListener(
-        "click",
-        function() {
-
-            document.getElementById(
-                "questionScreen"
-            ).style.display =
-                "none";
-
-        }
-    );
-
-
-// =====================================================
-// INITIALIZE
-// =====================================================
-
-updateXP();
-
-gameLoop();
+console.log("TechnoQuest loaded successfully!");
