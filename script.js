@@ -1,1155 +1,881 @@
-// ===============================
-// TECHNOQUEST - JAVASCRIPT
-// ===============================
+// ================================
+// PLAYER DATA
+// ================================
 
-// ---------- GAME VARIABLES ----------
-
-let currentMode = "";
-let currentDifficulty = "";
-let gameQuestions = [];
-let questionIndex = 0;
-let score = 0;
-
-let bossHP = 0;
-let maxBossHP = 0;
-
-let level = 1;
-let xp = 0;
-
-let timer;
-let timeLeft = 60;
-
-
-// ---------- DIFFICULTY ----------
-
-const difficultyHP = {
-    easy: 100,
-    medium: 200,
-    hard: 300
+let player = {
+    level: 1,
+    xp: 0,
+    coins: 0,
+    health: 100,
+    maxHealth: 100
 };
 
 
-// ---------- GENERAL QUESTIONS ----------
+// ================================
+// GAME DATA
+// ================================
 
-const questions = {
+const rooms = {
 
-    easy: [
-        {
-            question: "What device is mainly used to type text?",
-            options: ["Keyboard", "Monitor", "Mouse", "Printer"],
-            answer: "Keyboard"
-        },
-        {
-            question: "Which device displays images and text?",
-            options: ["Monitor", "Keyboard", "Scanner", "Microphone"],
-            answer: "Monitor"
-        },
-        {
-            question: "What does CPU stand for?",
-            options: [
-                "Central Processing Unit",
-                "Computer Personal Unit",
-                "Central Program Utility",
-                "Computer Processing User"
-            ],
-            answer: "Central Processing Unit"
-        },
-        {
-            question: "Which device is used to move the pointer?",
-            options: ["Mouse", "Printer", "Speaker", "Scanner"],
-            answer: "Mouse"
-        },
-        {
-            question: "Which one is an operating system?",
-            options: ["Windows", "Google", "YouTube", "Facebook"],
-            answer: "Windows"
-        },
-        {
-            question: "What is used to print documents?",
-            options: ["Printer", "Monitor", "Keyboard", "Webcam"],
-            answer: "Printer"
-        },
-        {
-            question: "Which device produces sound?",
-            options: ["Speaker", "Scanner", "Keyboard", "Monitor"],
-            answer: "Speaker"
-        },
-        {
-            question: "What does RAM temporarily store?",
-            options: [
-                "Data currently being used",
-                "Printed documents",
-                "Internet cables",
-                "Computer passwords only"
-            ],
-            answer: "Data currently being used"
-        }
-    ],
+    computer: {
+        name: "Computer Cavern",
+        enemy: "Hardware Golem",
+        enemyIcon: "🗿",
+        enemyHP: 50,
 
-    medium: [
-        {
-            question: "What does USB stand for?",
-            options: [
-                "Universal Serial Bus",
-                "Universal System Backup",
-                "User Storage Base",
-                "United Serial Board"
-            ],
-            answer: "Universal Serial Bus"
-        },
-        {
-            question: "Which file extension is commonly used for a webpage?",
-            options: [".html", ".mp3", ".jpg", ".exe"],
-            answer: ".html"
-        },
-        {
-            question: "What is the main purpose of an operating system?",
-            options: [
-                "Manage computer hardware and software",
-                "Create internet connections only",
-                "Print documents",
-                "Play music only"
-            ],
-            answer: "Manage computer hardware and software"
-        },
-        {
-            question: "Which component stores files permanently?",
-            options: ["SSD", "RAM", "CPU", "GPU"],
-            answer: "SSD"
-        },
-        {
-            question: "What is a browser used for?",
-            options: [
-                "Access websites",
-                "Edit hardware",
-                "Print pictures",
-                "Clean a keyboard"
-            ],
-            answer: "Access websites"
-        },
-        {
-            question: "Which shortcut is commonly used to copy text?",
-            options: ["Ctrl + C", "Ctrl + V", "Ctrl + X", "Ctrl + Z"],
-            answer: "Ctrl + C"
-        },
-        {
-            question: "Which shortcut is used to paste copied content?",
-            options: ["Ctrl + V", "Ctrl + C", "Ctrl + S", "Ctrl + P"],
-            answer: "Ctrl + V"
-        },
-        {
-            question: "What is malware?",
-            options: [
-                "Malicious software",
-                "Computer hardware",
-                "A type of monitor",
-                "A programming language"
-            ],
-            answer: "Malicious software"
-        }
-    ],
+        questions: [
+            {
+                question: "Which component is considered the brain of the computer?",
+                answers: ["RAM", "CPU", "Monitor", "Keyboard"],
+                correct: 1
+            },
 
-    hard: [
-        {
-            question: "What does DNS do?",
-            options: [
-                "Translates domain names into IP addresses",
-                "Stores computer files",
-                "Protects the keyboard",
-                "Controls the monitor"
-            ],
-            answer: "Translates domain names into IP addresses"
-        },
-        {
-            question: "What is an IP address?",
-            options: [
-                "An address identifying a device on a network",
-                "A type of computer virus",
-                "A file extension",
-                "A programming language"
-            ],
-            answer: "An address identifying a device on a network"
-        },
-        {
-            question: "Which protocol is commonly used for secure websites?",
-            options: ["HTTPS", "FTP", "HTTP", "SMTP"],
-            answer: "HTTPS"
-        },
-        {
-            question: "What does GPU primarily handle?",
-            options: [
-                "Graphics processing",
-                "Sound recording",
-                "Keyboard input",
-                "File compression"
-            ],
-            answer: "Graphics processing"
-        },
-        {
-            question: "What is phishing?",
-            options: [
-                "A scam designed to steal information",
-                "A type of computer processor",
-                "A file storage system",
-                "A programming method"
-            ],
-            answer: "A scam designed to steal information"
-        },
-        {
-            question: "What is two-factor authentication?",
-            options: [
-                "Using two verification methods",
-                "Using two computers",
-                "Having two passwords only",
-                "Using two browsers"
-            ],
-            answer: "Using two verification methods"
-        },
-        {
-            question: "What does a firewall help protect against?",
-            options: [
-                "Unauthorized network access",
-                "Broken keyboards",
-                "Low monitor brightness",
-                "Printer paper jams"
-            ],
-            answer: "Unauthorized network access"
-        },
-        {
-            question: "What is cloud computing?",
-            options: [
-                "Using remote internet-based computing resources",
-                "Repairing computer hardware",
-                "Increasing monitor brightness",
-                "Installing a keyboard"
-            ],
-            answer: "Using remote internet-based computing resources"
-        }
-    ]
-};
+            {
+                question: "Which device is used to display information?",
+                answers: ["Monitor", "Mouse", "Keyboard", "Microphone"],
+                correct: 0
+            },
+
+            {
+                question: "Which of these is an input device?",
+                answers: ["Monitor", "Speaker", "Keyboard", "Projector"],
+                correct: 2
+            },
+
+            {
+                question: "What does RAM temporarily store?",
+                answers: [
+                    "Data currently being used",
+                    "Printed documents",
+                    "Internet websites",
+                    "Computer cables"
+                ],
+                correct: 0
+            },
+
+            {
+                question: "Which one is software?",
+                answers: [
+                    "Keyboard",
+                    "Mouse",
+                    "Windows",
+                    "Monitor"
+                ],
+                correct: 2
+            }
+        ]
+    },
 
 
-// ---------- TECH FIXER ----------
+    keyboard: {
+        name: "Keyboard Castle",
+        enemy: "Keyboard Knight",
+        enemyIcon: "⌨️",
+        enemyHP: 50,
 
-const fixerQuestions = {
+        questions: [
+            {
+                question: "What does Ctrl + C usually do?",
+                answers: ["Paste", "Copy", "Save", "Undo"],
+                correct: 1
+            },
 
-    easy: [
-        {
-            question: "The computer has no sound. What should you check first?",
-            options: [
-                "Volume settings",
-                "Keyboard cable",
-                "Wallpaper",
-                "File name"
-            ],
-            answer: "Volume settings"
-        },
-        {
-            question: "The mouse is not moving. What should you check?",
-            options: [
-                "Mouse connection",
-                "Monitor brightness",
-                "Printer ink",
-                "Browser history"
-            ],
-            answer: "Mouse connection"
-        }
-    ],
+            {
+                question: "What does Ctrl + V usually do?",
+                answers: ["Paste", "Copy", "Delete", "Print"],
+                correct: 0
+            },
 
-    medium: [
-        {
-            question: "A computer program stops responding. What can you try?",
-            options: [
-                "Close and reopen the program",
-                "Turn off the monitor only",
-                "Delete the keyboard",
-                "Change the wallpaper"
-            ],
-            answer: "Close and reopen the program"
-        },
-        {
-            question: "A computer is running very slowly. What can help?",
-            options: [
-                "Close unnecessary programs",
-                "Increase screen brightness",
-                "Disconnect the mouse",
-                "Change the desktop wallpaper"
-            ],
-            answer: "Close unnecessary programs"
-        }
-    ],
+            {
+                question: "What does Ctrl + Z usually do?",
+                answers: ["Undo", "Redo", "Save", "Close"],
+                correct: 0
+            },
 
-    hard: [
-        {
-            question: "Which Windows tool can help diagnose system problems?",
-            options: [
-                "Task Manager",
-                "Paint",
-                "Calculator",
-                "Notepad"
-            ],
-            answer: "Task Manager"
-        },
-        {
-            question: "What should you do before making major system changes?",
-            options: [
-                "Back up important files",
-                "Delete temporary files randomly",
-                "Disconnect the monitor",
-                "Remove the keyboard"
-            ],
-            answer: "Back up important files"
-        }
-    ]
-};
+            {
+                question: "Which key is commonly used to create a space?",
+                answers: ["Shift", "Enter", "Spacebar", "Tab"],
+                correct: 2
+            },
+
+            {
+                question: "Which key is commonly used to start a new line?",
+                answers: ["Enter", "Ctrl", "Alt", "Shift"],
+                correct: 0
+            }
+        ]
+    },
 
 
-// ---------- FILE MASTER ----------
+    files: {
+        name: "File Forest",
+        enemy: "File Mimic",
+        enemyIcon: "📁",
+        enemyHP: 50,
 
-const fileQuestions = {
+        questions: [
+            {
+                question: "Which file extension is commonly used for an image?",
+                answers: [".jpg", ".exe", ".txt", ".html"],
+                correct: 0
+            },
 
-    easy: [
-        {
-            question: "Which extension is commonly used for an image?",
-            options: [".jpg", ".exe", ".html", ".txt"],
-            answer: ".jpg"
-        },
-        {
-            question: "Which extension is commonly used for a text file?",
-            options: [".txt", ".mp4", ".png", ".exe"],
-            answer: ".txt"
-        },
-        {
-            question: "Which extension is commonly used for a video?",
-            options: [".mp4", ".jpg", ".txt", ".html"],
-            answer: ".mp4"
-        }
-    ],
+            {
+                question: "Which action creates a duplicate of a file?",
+                answers: ["Copy", "Delete", "Rename", "Close"],
+                correct: 0
+            },
 
-    medium: [
-        {
-            question: "Which file format is commonly used for documents?",
-            options: [".docx", ".mp3", ".png", ".exe"],
-            answer: ".docx"
-        },
-        {
-            question: "Which format is commonly used for compressed files?",
-            options: [".zip", ".jpg", ".html", ".mp4"],
-            answer: ".zip"
-        },
-        {
-            question: "Which extension is commonly associated with JavaScript?",
-            options: [".js", ".css", ".jpg", ".mp3"],
-            answer: ".js"
-        }
-    ],
+            {
+                question: "What is a folder mainly used for?",
+                answers: [
+                    "Organizing files",
+                    "Increasing internet speed",
+                    "Printing documents",
+                    "Playing music"
+                ],
+                correct: 0
+            },
 
-    hard: [
-        {
-            question: "Which extension is commonly used for CSS files?",
-            options: [".css", ".js", ".html", ".exe"],
-            answer: ".css"
-        },
-        {
-            question: "Which extension is commonly used for executable Windows programs?",
-            options: [".exe", ".txt", ".jpg", ".css"],
-            answer: ".exe"
-        }
-    ]
-};
+            {
+                question: "Which extension is commonly associated with a text file?",
+                answers: [".mp3", ".txt", ".jpg", ".png"],
+                correct: 1
+            },
+
+            {
+                question: "What happens when you rename a file?",
+                answers: [
+                    "Its name changes",
+                    "It is automatically deleted",
+                    "The computer shuts down",
+                    "It becomes a virus"
+                ],
+                correct: 0
+            }
+        ]
+    },
 
 
-// ---------- CYBER DEFENDER ----------
+    internet: {
+        name: "Internet Ruins",
+        enemy: "Web Phantom",
+        enemyIcon: "👻",
+        enemyHP: 50,
 
-const cyberQuestions = {
+        questions: [
+            {
+                question: "Which software is used to access websites?",
+                answers: [
+                    "Web browser",
+                    "Calculator",
+                    "File manager",
+                    "Paint"
+                ],
+                correct: 0
+            },
 
-    easy: [
-        {
-            question: "Which password is safer?",
-            options: [
-                "T!ger9#Moon42",
-                "123456",
-                "password",
-                "qwerty"
-            ],
-            answer: "T!ger9#Moon42"
-        },
-        {
-            question: "What should you do with a suspicious link?",
-            options: [
-                "Do not click it",
-                "Click it immediately",
-                "Send it to everyone",
-                "Enter your password"
-            ],
-            answer: "Do not click it"
-        }
-    ],
+            {
+                question: "What does URL refer to?",
+                answers: [
+                    "A website address",
+                    "A computer virus",
+                    "A keyboard shortcut",
+                    "A type of hardware"
+                ],
+                correct: 0
+            },
 
-    medium: [
-        {
-            question: "What is phishing mainly designed to steal?",
-            options: [
-                "Personal information",
-                "Monitor brightness",
-                "Computer speakers",
-                "Keyboard keys"
-            ],
-            answer: "Personal information"
-        },
-        {
-            question: "Which action improves account security?",
-            options: [
-                "Enable two-factor authentication",
-                "Reuse one password everywhere",
-                "Share passwords with friends",
-                "Turn off security updates"
-            ],
-            answer: "Enable two-factor authentication"
-        }
-    ],
+            {
+                question: "Which is an example of a web browser?",
+                answers: [
+                    "Chrome",
+                    "Windows",
+                    "Photoshop",
+                    "Excel"
+                ],
+                correct: 0
+            },
 
-    hard: [
-        {
-            question: "What is ransomware?",
-            options: [
-                "Malware that can lock or encrypt files for payment",
-                "A type of keyboard",
-                "A graphics card",
-                "A web browser"
-            ],
-            answer: "Malware that can lock or encrypt files for payment"
-        },
-        {
-            question: "What is social engineering?",
-            options: [
-                "Manipulating people into revealing information",
-                "Building computer hardware",
-                "Designing websites",
-                "Installing a graphics card"
-            ],
-            answer: "Manipulating people into revealing information"
-        }
-    ]
-};
+            {
+                question: "What should you do with a suspicious link?",
+                answers: [
+                    "Click it immediately",
+                    "Share it",
+                    "Avoid clicking it",
+                    "Download everything"
+                ],
+                correct: 2
+            },
+
+            {
+                question: "What is a search engine used for?",
+                answers: [
+                    "Finding information online",
+                    "Cleaning a keyboard",
+                    "Charging a computer",
+                    "Creating hardware"
+                ],
+                correct: 0
+            }
+        ]
+    },
 
 
-// ======================================
-// RANDOMIZER
-// ======================================
+    security: {
+        name: "Cyber Dungeon",
+        enemy: "Malware Slime",
+        enemyIcon: "🦠",
+        enemyHP: 60,
 
-function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
+        questions: [
+            {
+                question: "Which password is strongest?",
+                answers: [
+                    "password123",
+                    "john2008",
+                    "123456",
+                    "T!9q#Lm2@xP"
+                ],
+                correct: 3
+            },
 
-        [array[i], array[j]] = [array[j], array[i]];
+            {
+                question: "What is phishing?",
+                answers: [
+                    "A computer game",
+                    "A trick to steal information",
+                    "A type of monitor",
+                    "A programming language"
+                ],
+                correct: 1
+            },
+
+            {
+                question: "What should you do if you receive a suspicious email?",
+                answers: [
+                    "Click every link",
+                    "Send your password",
+                    "Be cautious and verify it",
+                    "Forward it to everyone"
+                ],
+                correct: 2
+            },
+
+            {
+                question: "Why should you keep software updated?",
+                answers: [
+                    "For security and improvements",
+                    "To make the keyboard heavier",
+                    "To delete all files",
+                    "To stop the monitor"
+                ],
+                correct: 0
+            },
+
+            {
+                question: "Should you share your password with strangers?",
+                answers: [
+                    "Yes",
+                    "No",
+                    "Only online",
+                    "Always"
+                ],
+                correct: 1
+            }
+        ]
+    },
+
+
+    coding: {
+        name: "Coding Labyrinth",
+        enemy: "Bug King",
+        enemyIcon: "🐛",
+        enemyHP: 70,
+
+        questions: [
+            {
+                question: "Which language is used to structure webpages?",
+                answers: ["HTML", "MP3", "PNG", "CPU"],
+                correct: 0
+            },
+
+            {
+                question: "Which language is mainly used to style webpages?",
+                answers: ["CSS", "RAM", "JPG", "USB"],
+                correct: 0
+            },
+
+            {
+                question: "Which language adds interactivity to webpages?",
+                answers: ["JavaScript", "HTML", "JPEG", "BIOS"],
+                correct: 0
+            },
+
+            {
+                question: "What is a bug in programming?",
+                answers: [
+                    "An error in a program",
+                    "A computer mouse",
+                    "A keyboard",
+                    "A monitor"
+                ],
+                correct: 0
+            },
+
+            {
+                question: "What does a loop generally allow a program to do?",
+                answers: [
+                    "Repeat instructions",
+                    "Delete the computer",
+                    "Turn off the monitor",
+                    "Print hardware"
+                ],
+                correct: 0
+            }
+        ]
+    },
+
+
+    boss: {
+        name: "Digital Overlord",
+        enemy: "👑 DIGITAL OVERLORD",
+        enemyIcon: "👑",
+        enemyHP: 100,
+
+        questions: [
+            {
+                question: "Which component processes instructions?",
+                answers: ["CPU", "Monitor", "Mouse", "Speaker"],
+                correct: 0
+            },
+
+            {
+                question: "Which shortcut copies selected content?",
+                answers: ["Ctrl + V", "Ctrl + C", "Ctrl + Z", "Ctrl + X"],
+                correct: 1
+            },
+
+            {
+                question: "Which is a strong password?",
+                answers: [
+                    "123456",
+                    "password",
+                    "qwerty",
+                    "G7!pL#2xQ@9"
+                ],
+                correct: 3
+            },
+
+            {
+                question: "Which language is used for webpage structure?",
+                answers: ["CSS", "HTML", "JavaScript", "Python"],
+                correct: 1
+            },
+
+            {
+                question: "What should you do with a suspicious link?",
+                answers: [
+                    "Click it",
+                    "Share it",
+                    "Ignore or verify it first",
+                    "Send your password"
+                ],
+                correct: 2
+            },
+
+            {
+                question: "What is a web browser?",
+                answers: [
+                    "Software for accessing websites",
+                    "A computer cable",
+                    "A type of RAM",
+                    "A printer"
+                ],
+                correct: 0
+            },
+
+            {
+                question: "What is a folder used for?",
+                answers: [
+                    "Organizing files",
+                    "Increasing RAM",
+                    "Removing viruses automatically",
+                    "Changing the monitor"
+                ],
+                correct: 0
+            }
+        ]
     }
-
-    return array;
-}
+};
 
 
-// ======================================
-// GET QUESTIONS
-// ======================================
+// ================================
+// CURRENT GAME
+// ================================
 
-function getQuestions() {
-
-    if (currentMode === "fixer") {
-        return fixerQuestions[currentDifficulty];
-    }
-
-    if (currentMode === "file") {
-        return fileQuestions[currentDifficulty];
-    }
-
-    if (currentMode === "cyber") {
-        return cyberQuestions[currentDifficulty];
-    }
-
-    // Boss Battle, Speed Type and Computer Challenge
-    return questions[currentDifficulty];
-}
+let currentRoom = null;
+let currentQuestion = 0;
+let enemyHP = 0;
+let answered = false;
 
 
-// ======================================
-// START GAME
-// ======================================
+// ================================
+// HTML ELEMENTS
+// ================================
 
-function startGame() {
-    score = 0;
-    questionIndex = 0;
+const questionModal = document.getElementById("questionModal");
+const questionText = document.getElementById("questionText");
+const answersContainer = document.getElementById("answers");
+const feedback = document.getElementById("feedback");
 
-    // Get questions
-    let selectedQuestions = getQuestions();
+const enemyName = document.getElementById("enemyName");
+const enemyIcon = document.getElementById("enemyIcon");
+const enemyHealthBar = document.getElementById("enemyHealthBar");
+const enemyHealthText = document.getElementById("enemyHealthText");
 
-    // Make a completely separate copy
-    gameQuestions = selectedQuestions.map(question => ({
-        question: question.question,
-        answer: question.answer,
-        options: [...question.options]
-    }));
+const nextQuestion = document.getElementById("nextQuestion");
 
-    // RANDOMIZE THE QUESTIONS
-    shuffleArray(gameQuestions);
 
-    // RANDOMIZE THE ANSWERS
-    gameQuestions.forEach(question => {
-        shuffleArray(question.options);
+// ================================
+// ROOM CLICK
+// ================================
+
+document.querySelectorAll(".room").forEach(room => {
+
+    room.addEventListener("click", () => {
+
+        if (room.classList.contains("locked")) {
+            showMessage(
+                "🔒 Area Locked",
+                "Defeat the previous area to unlock this dungeon."
+            );
+            return;
+        }
+
+        startRoom(room.dataset.room);
+
     });
 
-    console.log("RANDOMIZED QUESTIONS:");
-    console.log(gameQuestions);
+});
 
-    maxBossHP = difficultyHP[currentDifficulty];
-    bossHP = maxBossHP;
 
-    updateBossHP();
+// ================================
+// START ROOM
+// ================================
 
-    showScreen("gameScreen");
+function startRoom(roomName) {
 
-    if (currentMode === "speed") {
-        startTimer();
-    }
+    currentRoom = rooms[roomName];
+
+    currentQuestion = 0;
+
+    enemyHP = currentRoom.enemyHP;
+
+    enemyName.textContent = currentRoom.enemy;
+    enemyIcon.textContent = currentRoom.enemyIcon;
+
+    questionModal.classList.remove("hidden");
+
+    updateEnemy();
 
     loadQuestion();
+
 }
 
 
-// ======================================
+// ================================
 // LOAD QUESTION
-// ======================================
+// ================================
 
 function loadQuestion() {
 
-    if (questionIndex >= gameQuestions.length) {
-        stopTimer();
-        missionSuccess();
-        return;
-    }
+    answered = false;
 
-    const question = gameQuestions[questionIndex];
+    const question =
+        currentRoom.questions[currentQuestion];
 
-    // Show randomized question
-    document.getElementById("question").textContent =
-        question.question;
+    questionText.textContent = question.question;
 
-    const answersContainer =
-        document.getElementById("answers");
+    document.getElementById("questionNumber").textContent =
+        `Question ${currentQuestion + 1} / ${currentRoom.questions.length}`;
 
     answersContainer.innerHTML = "";
 
-    // Make a new randomized copy of the choices
-    let choices = [...question.options];
+    feedback.textContent = "";
 
-    shuffleArray(choices);
+    nextQuestion.style.display = "none";
 
-    choices.forEach(choice => {
+
+    question.answers.forEach((answer, index) => {
 
         const button = document.createElement("button");
 
-        button.className = "answer-btn";
+        button.className = "answer";
 
-        button.textContent = choice;
+        button.textContent = answer;
 
-        button.onclick = function () {
-            checkAnswer(choice, question.answer);
-        };
+        button.addEventListener("click", () => {
 
-        answersContainer.appendChild(button);
-    });
-}
-
-// ======================================
-// CHECK ANSWER
-// ======================================
-
-function checkAnswer(selectedAnswer, correctAnswer) {
-
-    // Disable all buttons
-    document.querySelectorAll(".answer-btn")
-        .forEach(button => {
-
-            button.disabled = true;
+            answerQuestion(index, button);
 
         });
 
+        answersContainer.appendChild(button);
 
-   if (selectedAnswer === correctAnswer) {
+    });
 
-    // Correct answer
-    score += 20;
+}
 
-    addXP(20);
 
-    showFeedback("CORRECT!", true);
+// ================================
+// ANSWER QUESTION
+// ================================
 
-    // 🔊 Correct answer sound
-    playCorrectSound();
+function answerQuestion(selected, button) {
 
-    // Boss Battle damage
-    if (currentMode === "boss") {
+    if (answered) return;
 
-        // 🔊 Boss damage sound
-        playDamageSound();
+    answered = true;
 
-        bossHP -= 20;
+    const question =
+        currentRoom.questions[currentQuestion];
 
-        if (bossHP < 0) {
-            bossHP = 0;
+    const allButtons =
+        document.querySelectorAll(".answer");
+
+
+    if (selected === question.correct) {
+
+        button.classList.add("correct");
+
+        feedback.textContent =
+            "✅ Correct! The enemy takes damage!";
+
+        feedback.style.color = "#22c55e";
+
+        enemyHP -= 10;
+
+        addXP(20);
+
+        player.coins += 10;
+
+        allButtons.forEach(btn => {
+            btn.disabled = true;
+        });
+
+        updateEnemy();
+
+    } else {
+
+        button.classList.add("wrong");
+
+        feedback.textContent =
+            "❌ Incorrect. Try to remember this answer.";
+
+        feedback.style.color = "#ef4444";
+
+        player.health -= 10;
+
+        if (player.health < 0) {
+            player.health = 0;
         }
 
-            updateBossHP();
+        updatePlayer();
 
+        allButtons.forEach((btn, index) => {
 
-            // Boss defeated
-            if (bossHP <= 0) {
-
-                setTimeout(() => {
-
-                    missionSuccess();
-
-                }, 700);
-
-                return;
+            if (index === question.correct) {
+                btn.classList.add("correct");
             }
+
+            btn.disabled = true;
+
+        });
+
+        if (player.health <= 0) {
+
+            setTimeout(() => {
+
+                questionModal.classList.add("hidden");
+
+                showMessage(
+                    "💀 Mission Failed",
+                    "Your health reached zero. Review the lessons and try again!"
+                );
+
+            }, 800);
+
+            return;
         }
 
-    } else {
-
-        // Wrong answer
-        showFeedback("WRONG ANSWER!", false);
     }
 
 
-    questionIndex++;
+    nextQuestion.style.display = "inline-block";
 
-
-    setTimeout(() => {
-
-        loadQuestion();
-
-    }, 700);
 }
 
 
-// ======================================
-// FEEDBACK
-// ======================================
+// ================================
+// NEXT QUESTION
+// ================================
 
-function showFeedback(message, correct) {
+nextQuestion.addEventListener("click", () => {
 
-    const result =
-        document.getElementById("resultMessage");
+    if (enemyHP <= 0) {
 
-    if (!result) return;
+        finishRoom();
 
-    result.textContent = message;
+        return;
 
-    if (correct) {
-
-        result.className =
-            "result-message correct";
-
-    } else {
-
-        result.className =
-            "result-message wrong";
-    }
-}
-
-
-// ======================================
-// BOSS HP
-// ======================================
-
-function updateBossHP() {
-
-    const hpBar =
-        document.getElementById("bossHP");
-
-    const hpText =
-        document.getElementById("bossHPText");
-
-
-    if (hpBar) {
-
-        const percentage =
-            (bossHP / maxBossHP) * 100;
-
-        hpBar.style.width =
-            percentage + "%";
     }
 
 
-    if (hpText) {
+    currentQuestion++;
 
-        hpText.textContent =
-            `${bossHP} / ${maxBossHP} HP`;
+    if (
+        currentQuestion >=
+        currentRoom.questions.length
+    ) {
+
+        finishRoom();
+
+        return;
+
     }
+
+
+    loadQuestion();
+
+});
+
+
+// ================================
+// ENEMY UPDATE
+// ================================
+
+function updateEnemy() {
+
+    const maxHP = currentRoom.enemyHP;
+
+    let percentage =
+        (enemyHP / maxHP) * 100;
+
+    if (percentage < 0) percentage = 0;
+
+    enemyHealthBar.style.width =
+        percentage + "%";
+
+    enemyHealthText.textContent =
+        `${Math.max(enemyHP, 0)} / ${maxHP} HP`;
+
 }
 
 
-// ======================================
-// TIMER
-// ======================================
+// ================================
+// FINISH ROOM
+// ================================
 
-function startTimer() {
+function finishRoom() {
 
-    timeLeft = 60;
+    questionModal.classList.add("hidden");
 
-    updateTimer();
-
-
-    clearInterval(timer);
-
-    timer = setInterval(() => {
-
-        timeLeft--;
-
-        updateTimer();
+    const roomName =
+        Object.keys(rooms).find(
+            key => rooms[key] === currentRoom
+        );
 
 
-        if (timeLeft <= 0) {
-
-            clearInterval(timer);
-
-            // Time ran out
-            missionFailed();
-
-        }
-
-    }, 1000);
-}
+    unlockNextRoom(roomName);
 
 
-function stopTimer() {
+    if (roomName === "boss") {
 
-    clearInterval(timer);
-}
+        showMessage(
+            "🏆 GAME COMPLETE!",
+            "You defeated the Digital Overlord and became a Computer Literacy Master!"
+        );
 
+        return;
 
-function updateTimer() {
-
-    const timerElement =
-        document.getElementById("timer");
-
-    if (timerElement) {
-
-        timerElement.textContent =
-            `TIME: ${timeLeft}`;
     }
+
+
+    showMessage(
+        "⚔️ Mission Successful!",
+        `You defeated ${currentRoom.enemy}! The next area has been unlocked.`
+    );
+
 }
 
 
-// ======================================
+// ================================
+// UNLOCK NEXT ROOM
+// ================================
+
+function unlockNextRoom(roomName) {
+
+    const order = [
+        "computer",
+        "keyboard",
+        "files",
+        "internet",
+        "security",
+        "coding",
+        "boss"
+    ];
+
+    const currentIndex =
+        order.indexOf(roomName);
+
+    const nextRoom =
+        order[currentIndex + 1];
+
+
+    if (!nextRoom) return;
+
+
+    const nextButton =
+        document.querySelector(
+            `[data-room="${nextRoom}"]`
+        );
+
+
+    if (nextButton) {
+
+        nextButton.classList.remove("locked");
+
+        const small =
+            nextButton.querySelector("small");
+
+        small.textContent =
+            "Unlocked!";
+
+    }
+
+}
+
+
+// ================================
 // XP SYSTEM
-// ======================================
+// ================================
 
 function addXP(amount) {
 
-    xp += amount;
-
-    checkLevelUp();
-
-    updateXP();
-}
+    player.xp += amount;
 
 
-function getXPNeeded() {
-
-    // Level 1 = 100
-    // Level 2 = 105
-    // Level 3 = 110
-    // etc.
-
-    return 100 + ((level - 1) * 5);
-}
+    let needed =
+        100 + ((player.level - 1) * 5);
 
 
-function checkLevelUp() {
+    while (player.xp >= needed) {
 
-    let neededXP = getXPNeeded();
+        player.xp -= needed;
 
+        player.level++;
 
-    while (xp >= neededXP) {
+        needed =
+            100 + ((player.level - 1) * 5);
 
-        xp -= neededXP;
+        showMessage(
+            "⭐ LEVEL UP!",
+            `You reached Level ${player.level}!`
+        );
 
-        level++;
-
-        neededXP = getXPNeeded();
-
-        showLevelUp();
     }
+
+
+    updatePlayer();
+
 }
 
 
-function updateXP() {
+// ================================
+// UPDATE PLAYER
+// ================================
 
-    const xpText =
-        document.getElementById("xpText");
-
-    const xpBar =
-        document.getElementById("xpBar");
+function updatePlayer() {
 
     const needed =
-        getXPNeeded();
+        100 + ((player.level - 1) * 5);
 
 
-    if (xpText) {
+    document.getElementById("level").textContent =
+        player.level;
 
-        xpText.textContent =
-            `${xp} / ${needed} XP`;
-    }
+    document.getElementById("xp").textContent =
+        player.xp;
 
+    document.getElementById("xpNeeded").textContent =
+        needed;
 
-    if (xpBar) {
-
-        const percentage =
-            (xp / needed) * 100;
-
-        xpBar.style.width =
-            percentage + "%";
-    }
+    document.getElementById("coins").textContent =
+        player.coins;
 
 
-    const levelText =
-        document.getElementById("levelText");
+    const xpPercentage =
+        (player.xp / needed) * 100;
 
-    if (levelText) {
+    document.getElementById("xpBar").style.width =
+        xpPercentage + "%";
 
-        levelText.textContent =
-            `LEVEL ${level}`;
-    }
+
+    document.getElementById("healthBar").style.width =
+        player.health + "%";
+
+    document.getElementById("healthText").textContent =
+        `${player.health} / ${player.maxHealth}`;
+
 }
 
 
-// ======================================
-// LEVEL UP
-// ======================================
+// ================================
+// MESSAGE
+// ================================
 
-function showLevelUp() {
+function showMessage(title, text) {
 
-    const popup =
-        document.getElementById("levelUpPopup");
+    document.getElementById("messageTitle").textContent =
+        title;
 
-    if (!popup) return;
+    document.getElementById("messageText").textContent =
+        text;
 
-    popup.classList.add("show");
+    document.getElementById("messageBox")
+        .classList.remove("hidden");
 
-
-    setTimeout(() => {
-
-        popup.classList.remove("show");
-
-    }, 2000);
 }
 
 
-// ======================================
-// MISSION SUCCESS
-// ======================================
+// ================================
+// MESSAGE CLOSE
+// ================================
 
-function missionSuccess() {
+document.getElementById("messageButton")
+    .addEventListener("click", () => {
 
-    stopTimer();
+        document.getElementById("messageBox")
+            .classList.add("hidden");
 
-    // Completion bonus
-    addXP(50);
-
-
-    const scoreElement =
-        document.getElementById("finalScore");
-
-    if (scoreElement) {
-
-        scoreElement.textContent =
-            `SCORE: ${score}`;
-    }
-
-
-    showScreen("successScreen");
-}
-
-
-// ======================================
-// MISSION FAILED
-// ======================================
-
-function missionFailed() {
-
-    stopTimer();
-
-
-    const failedScore =
-        document.getElementById("failedScore");
-
-    if (failedScore) {
-
-        failedScore.textContent =
-            `SCORE: ${score}`;
-    }
-
-
-    showScreen("failedScreen");
-}
-
-
-// ======================================
-// SCREEN NAVIGATION
-// ======================================
-
-function showScreen(screenId) {
-
-    document
-        .querySelectorAll(".screen")
-        .forEach(screen => {
-
-            screen.classList.remove("active");
-
-        });
-
-
-    const screen =
-        document.getElementById(screenId);
-
-    if (screen) {
-
-        screen.classList.add("active");
-    }
-}
-
-
-// ======================================
-// SELECT GAME MODE
-// ======================================
-
-function selectMode(mode) {
-
-    currentMode = mode;
-
-    showScreen("difficultyScreen");
-}
-
-
-// ======================================
-// SELECT DIFFICULTY
-// ======================================
-
-function selectDifficulty(difficulty) {
-
-    currentDifficulty = difficulty;
-
-    startGame();
-}
-
-
-// ======================================
-// HOME
-// ======================================
-
-function goHome() {
-
-    stopTimer();
-
-    showScreen("homeScreen");
-}
-
-
-// ======================================
-// RETRY
-// ======================================
-
-function retryGame() {
-
-    startGame();
-}
-
-
-// ======================================
-// INITIALIZE
-// ======================================
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    updateXP();
-
-    showScreen("homeScreen");
-
-});
-
-/* =====================================================
-   TECHNOQUEST SOUNDS
-===================================================== */
-
-function playSound(soundId) {
-
-    const sound = document.getElementById(soundId);
-
-    if (!sound) return;
-
-    sound.currentTime = 0;
-
-    sound.play().catch(() => {
-        // Browser may block audio until user interacts
     });
-}
 
 
-/* =====================================================
-   BUTTON CLICK SOUND
-===================================================== */
+// ================================
+// CLOSE QUESTION
+// ================================
 
-document.addEventListener("click", function(event) {
+document.getElementById("closeQuestion")
+    .addEventListener("click", () => {
 
-    if (
-        event.target.tagName === "BUTTON" ||
-        event.target.closest("button")
-    ) {
-        playSound("clickSound");
-    }
+        questionModal.classList.add("hidden");
 
-});
+    });
 
 
-/* =====================================================
-   GAME SOUND FUNCTIONS
-===================================================== */
+// ================================
+// INITIALIZE
+// ================================
 
-function playCorrectSound() {
-
-    playSound("correctSound");
-
-}
-
-
-function playWrongSound() {
-
-    playSound("wrongSound");
-
-}
-
-
-function playDamageSound() {
-
-    playSound("damageSound");
-
-}
-
-
-function playSuccessSound() {
-
-    playSound("successSound");
-
-}
-
-
-function playFailedSound() {
-
-    playSound("failedSound");
-
-}
-
-
-function playLevelUpSound() {
-
-    playSound("levelSound");
-
-}
-
-
-function playLoginSound() {
-
-    playSound("loginSound");
-
-}
-
-
-/* =====================================================
-   THEMES
-===================================================== */
-
-function toggleThemes() {
-
-    const menu =
-        document.getElementById("themeMenu");
-
-    menu.classList.toggle("show");
-
-}
-
-
-function setTheme(theme) {
-
-    document.body.classList.remove(
-        "theme-cyber",
-        "theme-inferno",
-        "theme-galaxy",
-        "theme-matrix",
-        "theme-ice"
-    );
-
-
-    document.body.classList.add(
-        "theme-" + theme
-    );
-
-
-    localStorage.setItem(
-        "technoquestTheme",
-        theme
-    );
-
-
-    document
-        .getElementById("themeMenu")
-        .classList.remove("show");
-
-}
-
-
-/* =====================================================
-   LOAD SAVED THEME
-===================================================== */
-
-const savedTheme =
-    localStorage.getItem(
-        "technoquestTheme"
-    );
-
-
-if (savedTheme) {
-
-    setTheme(savedTheme);
-
-} else {
-
-    document.body.classList.add(
-        "theme-cyber"
-    );
-
-}
-
-
-/* =====================================================
-   CLOSE THEME MENU
-===================================================== */
-
-document.addEventListener("click", function(event) {
-
-    const panel =
-        document.querySelector(".theme-panel");
-
-    if (
-        panel &&
-        !panel.contains(event.target)
-    ) {
-
-        document
-            .getElementById("themeMenu")
-            .classList.remove("show");
-
-    }
-
-});
+updatePlayer();
