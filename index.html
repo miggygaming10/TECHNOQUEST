@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <title>TechnoQuest</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,85 +14,208 @@
 
 <div id="game">
 
-    <!-- GAME WORLD -->
+    <!-- =========================
+         GAME WORLD
+    ========================== -->
+
     <div id="world">
 
-        <div class="title">TECHNOQUEST</div>
+        <!-- Ground decorations -->
 
-        <!-- DECORATIONS -->
-        <div class="tree" style="left:100px;top:100px;">🌳</div>
-        <div class="tree" style="left:650px;top:120px;">🌳</div>
-        <div class="tree" style="left:120px;top:600px;">🌳</div>
-        <div class="tree" style="left:800px;top:550px;">🌳</div>
+        <div class="grass grass1"></div>
+        <div class="grass grass2"></div>
+        <div class="grass grass3"></div>
+        <div class="grass grass4"></div>
 
-        <div class="rock" style="left:450px;top:100px;">🪨</div>
-        <div class="rock" style="left:300px;top:500px;">🪨</div>
+        <!-- Paths -->
 
-        <!-- INTERACTABLE OBJECTS -->
+        <div class="path path1"></div>
+        <div class="path path2"></div>
+
+        <!-- Trees -->
+
+        <div class="tree tree1">
+            <div class="tree-leaves"></div>
+            <div class="tree-trunk"></div>
+        </div>
+
+        <div class="tree tree2">
+            <div class="tree-leaves"></div>
+            <div class="tree-trunk"></div>
+        </div>
+
+        <div class="tree tree3">
+            <div class="tree-leaves"></div>
+            <div class="tree-trunk"></div>
+        </div>
+
+        <div class="tree tree4">
+            <div class="tree-leaves"></div>
+            <div class="tree-trunk"></div>
+        </div>
+
+
+        <!-- Rocks -->
+
+        <div class="rock rock1"></div>
+        <div class="rock rock2"></div>
+        <div class="rock rock3"></div>
+
+
+        <!-- =========================
+             COMPUTER
+        ========================== -->
 
         <div class="object computer"
              data-name="Computer Terminal"
              data-type="computer"
-             style="left:350px;top:220px;">
-            🖥️
-            <span>Computer</span>
+             style="left: 520px; top: 220px;">
+
+            <div class="computer-screen">
+                <div class="screen-light"></div>
+            </div>
+
+            <div class="computer-stand"></div>
+
+            <div class="object-label">
+                COMPUTER
+            </div>
+
         </div>
+
+
+        <!-- =========================
+             CHEST
+        ========================== -->
 
         <div class="object chest"
              data-name="Mystery Chest"
              data-type="chest"
-             style="left:700px;top:300px;">
-            📦
-            <span>Chest</span>
+             style="left: 800px; top: 430px;">
+
+            <div class="chest-top"></div>
+            <div class="chest-body"></div>
+            <div class="chest-lock"></div>
+
+            <div class="object-label">
+                CHEST
+            </div>
+
         </div>
 
-        <div class="object npc"
-             data-name="Teacher"
+
+        <!-- =========================
+             TEACHER
+        ========================== -->
+
+        <div class="object teacher"
+             data-name="Computer Teacher"
              data-type="npc"
-             style="left:180px;top:350px;">
-            👨‍🏫
-            <span>Teacher</span>
+             style="left: 260px; top: 420px;">
+
+            <div class="npc-head"></div>
+            <div class="npc-body"></div>
+            <div class="npc-hair"></div>
+
+            <div class="object-label">
+                TEACHER
+            </div>
+
         </div>
+
+
+        <!-- =========================
+             DOOR
+        ========================== -->
 
         <div class="object door"
              data-name="Dungeon Gate"
              data-type="door"
-             style="left:500px;top:600px;">
-            🚪
-            <span>Dungeon Gate</span>
+             style="left: 570px; top: 680px;">
+
+            <div class="door-frame">
+                <div class="door-inside"></div>
+            </div>
+
+            <div class="object-label">
+                DUNGEON
+            </div>
+
         </div>
 
-        <!-- PLAYER -->
+
+        <!-- =========================
+             PLAYER
+        ========================== -->
+
         <div id="player">
-            🧙
+
+            <div class="player-shadow"></div>
+
+            <div class="character">
+
+                <div class="hair"></div>
+
+                <div class="head">
+                    <div class="eye eye1"></div>
+                    <div class="eye eye2"></div>
+                </div>
+
+                <div class="body"></div>
+
+                <div class="arm arm-left"></div>
+                <div class="arm arm-right"></div>
+
+                <div class="leg leg-left"></div>
+                <div class="leg leg-right"></div>
+
+            </div>
+
         </div>
 
     </div>
 
 
-    <!-- TOP UI -->
+    <!-- =========================
+         TOP UI
+    ========================== -->
+
     <div id="topUI">
 
-        <div class="player-card">
-            <b>⚔️ TECH WARRIOR</b>
-            <span>Level <b id="level">1</b></span>
+        <div class="player-info">
+
+            <div class="avatar-small"></div>
+
+            <div>
+                <strong>TECH WARRIOR</strong>
+                <br>
+                Level <span id="level">1</span>
+            </div>
+
         </div>
 
-        <div class="xp-card">
-            ⭐ XP:
+
+        <div class="xp-info">
+
+            ⭐ XP
             <span id="xp">0</span> /
             <span id="xpNeeded">100</span>
 
             <div class="xp-bar">
                 <div id="xpFill"></div>
             </div>
+
         </div>
 
     </div>
 
 
-    <!-- INTERACTION -->
+    <!-- =========================
+         INTERACTION
+    ========================== -->
+
     <div id="interaction">
+
         <div id="interactionText">
             COMPUTER
         </div>
@@ -97,34 +223,47 @@
         <button id="interactButton">
             INTERACT
         </button>
+
     </div>
 
 
-    <!-- JOYSTICK -->
+    <!-- =========================
+         JOYSTICK
+    ========================== -->
+
     <div id="joystick">
 
         <div id="joystickBase">
+
             <div id="joystickStick"></div>
+
         </div>
 
     </div>
 
 
-    <!-- QUESTION WINDOW -->
+    <!-- =========================
+         QUESTION SCREEN
+    ========================== -->
+
     <div id="questionScreen">
 
         <div class="question-box">
 
-            <button id="closeQuestion">✕</button>
+            <button id="closeQuestion">
+                ×
+            </button>
 
-            <div id="questionIcon">🖥️</div>
+            <div id="questionIcon">
+                🖥️
+            </div>
 
             <h2 id="questionTitle">
                 Computer Challenge
             </h2>
 
             <p id="questionCounter">
-                Question 1
+                Question 1 / 5
             </p>
 
             <h3 id="questionText">
@@ -144,16 +283,21 @@
     </div>
 
 
-    <!-- MESSAGE -->
+    <!-- =========================
+         MESSAGE
+    ========================== -->
+
     <div id="messageScreen">
 
         <div class="message-box">
 
             <h2 id="messageTitle">
-                Mission Complete!
+                Welcome!
             </h2>
 
-            <p id="messageText"></p>
+            <p id="messageText">
+                Welcome to TechnoQuest.
+            </p>
 
             <button id="messageButton">
                 CONTINUE
@@ -164,6 +308,7 @@
     </div>
 
 </div>
+
 
 <script src="script.js"></script>
 
