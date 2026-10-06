@@ -3,1202 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>TechnoQuest</title>
-
+    <title>TechnoQuest - Digital Dungeon</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+<header>
+    <div class="logo">⚔️ TECHONOQUEST</div>
 
-<header class="topbar">
-
-    <div class="logo">
-        <span class="logo-icon">⚡</span>
-        TECHNOQUEST
+    <div class="player-info">
+        <span>Level: <b id="level">1</b></span>
+        <span>XP: <b id="xp">0</b>/<b id="xpNeeded">100</b></span>
+        <span>💰 <b id="coins">0</b></span>
     </div>
-
-    <div class="header-center">
-        <span class="computer-label">COMPUTER LITERACY</span>
-
-        <div class="level-info">
-            <span id="levelText">LEVEL 1</span>
-            <span id="xpText">0 / 100 XP</span>
-        </div>
-
-        <div class="xp-container">
-            <div id="xpBar" class="xp-bar"></div>
-        </div>
-    </div>
-
-
-    <!-- LOGIN AREA -->
-
-    <div class="account-area">
-
-        <button class="login-button" onclick="openAuth('login')">
-            LOGIN
-        </button>
-
-        <button class="signup-button" onclick="openAuth('signup')">
-            SIGN UP
-        </button>
-
-    </div>
-
 </header>
 
+<main>
 
-<!-- =====================================================
-     HOME SCREEN
-===================================================== -->
-
-<section id="homeScreen" class="screen active">
-
-    <div class="home-content">
-
-        <div class="home-text">
-
-            <p class="small-title">
-                WELCOME TO
-            </p>
-
-            <h1>
-                TECHNO<span>QUEST</span>
-            </h1>
-
-            <p class="home-description">
-                Learn computer literacy through challenges,
-                missions, quizzes, and battles.
-            </p>
-
+    <!-- PLAYER STATS -->
+    <section class="stats">
+        <div class="stat-box">
+            ❤️ Health
+            <div class="health-bar">
+                <div id="healthBar"></div>
+            </div>
+            <span id="healthText">100 / 100</span>
         </div>
 
-
-        <!-- =================================================
-             TECHNOBOT
-        ================================================== -->
-
-        <div class="technobot-container">
-
-            <div class="technobot">
-
-                <!-- Antenna -->
-
-                <div class="robot-antenna">
-                    <div class="antenna-light"></div>
-                </div>
-
-
-                <!-- Head -->
-
-                <div class="robot-head">
-
-                    <div class="robot-screen">
-
-                        <div class="robot-eyes">
-
-                            <div class="robot-eye"></div>
-
-                            <div class="robot-eye"></div>
-
-                        </div>
-
-
-                        <div class="robot-mouth">
-
-                            <span></span>
-                            <span></span>
-                            <span></span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="head-button red"></div>
-                    <div class="head-button yellow"></div>
-                    <div class="head-button green"></div>
-
-                </div>
-
-
-                <!-- Neck -->
-
-                <div class="robot-neck"></div>
-
-
-                <!-- Body -->
-
-                <div class="robot-body">
-
-                    <div class="robot-logo">
-                        T
-                    </div>
-
-                    <div class="robot-chest-light"></div>
-
-                </div>
-
-
-                <!-- Left Arm -->
-
-                <div class="robot-arm left-arm">
-
-                    <div class="robot-hand">
-
-                        <div></div>
-                        <div></div>
-                        <div></div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Right Arm -->
-
-                <div class="robot-arm right-arm">
-
-                    <div class="robot-hand">
-
-                        <div></div>
-                        <div></div>
-                        <div></div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Legs -->
-
-                <div class="robot-leg left-leg">
-
-                    <div class="robot-foot"></div>
-
-                </div>
-
-
-                <div class="robot-leg right-leg">
-
-                    <div class="robot-foot"></div>
-
-                </div>
-
+        <div class="stat-box">
+            ⭐ Experience
+            <div class="xp-bar">
+                <div id="xpBar"></div>
             </div>
-
-
-            <div class="technobot-name">
-                TECHNOBOT
-            </div>
-
-            <div class="technobot-title">
-                YOUR COMPUTER LITERACY GUIDE
-            </div>
-
         </div>
+    </section>
 
 
-        <!-- Start Button -->
+    <!-- DUNGEON -->
+    <section class="dungeon">
 
-        <button class="start-button"
-                onclick="showScreen('modeScreen')">
+        <h1>🏰 DIGITAL DUNGEON</h1>
+        <p class="subtitle">Explore the dungeon and master computer literacy.</p>
 
-            START QUEST
+        <div class="map">
 
-            <span>→</span>
-
-        </button>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     GAME MODE SCREEN
-===================================================== -->
-
-<section id="modeScreen" class="screen">
-
-    <div class="section-header">
-
-        <p class="small-title">
-            CHOOSE YOUR MISSION
-        </p>
-
-        <h2>
-            GAME MODES
-        </h2>
-
-        <p>
-            Select a Computer Literacy challenge.
-        </p>
-
-    </div>
-
-
-    <div class="mode-grid">
-
-
-        <!-- BOSS -->
-
-        <button class="mode-card"
-                onclick="selectMode('boss')">
-
-            <div class="mode-icon boss-icon">
-                ⚔
-            </div>
-
-            <h3>BOSS BATTLE</h3>
-
-            <p>
-                Answer questions and damage the
-                computer boss.
-            </p>
-
-            <span class="mode-tag">
-                BATTLE
-            </span>
-
-        </button>
-
-
-        <!-- SPEED -->
-
-        <button class="mode-card"
-                onclick="selectMode('speed')">
-
-            <div class="mode-icon speed-icon">
-                ⚡
-            </div>
-
-            <h3>SPEED TYPE</h3>
-
-            <p>
-                Answer computer questions
-                before time runs out.
-            </p>
-
-            <span class="mode-tag">
-                TIME
-            </span>
-
-        </button>
-
-
-        <!-- TECH FIXER -->
-
-        <button class="mode-card"
-                onclick="selectMode('fixer')">
-
-            <div class="mode-icon fixer-icon">
-                🔧
-            </div>
-
-            <h3>TECH FIXER</h3>
-
-            <p>
-                Solve computer problems and
-                troubleshoot devices.
-            </p>
-
-            <span class="mode-tag">
-                FIX
-            </span>
-
-        </button>
-
-
-        <!-- COMPUTER CHALLENGE -->
-
-        <button class="mode-card"
-                onclick="selectMode('challenge')">
-
-            <div class="mode-icon challenge-icon">
-                🧠
-            </div>
-
-            <h3>COMPUTER CHALLENGE</h3>
-
-            <p>
-                Test your overall computer
-                literacy knowledge.
-            </p>
-
-            <span class="mode-tag">
-                QUIZ
-            </span>
-
-        </button>
-
-
-        <!-- FILE MASTER -->
-
-        <button class="mode-card"
-                onclick="selectMode('file')">
-
-            <div class="mode-icon file-icon">
-                📁
-            </div>
-
-            <h3>FILE MASTER</h3>
-
-            <p>
-                Master file types, extensions,
-                and digital organization.
-            </p>
-
-            <span class="mode-tag">
-                FILES
-            </span>
-
-        </button>
-
-
-        <!-- CYBER DEFENDER -->
-
-        <button class="mode-card"
-                onclick="selectMode('cyber')">
-
-            <div class="mode-icon cyber-icon">
-                🛡
-            </div>
-
-            <h3>CYBER DEFENDER</h3>
-
-            <p>
-                Protect yourself from
-                cyber threats and scams.
-            </p>
-
-            <span class="mode-tag">
-                SECURITY
-            </span>
-
-        </button>
-
-    </div>
-
-
-    <button class="back-button"
-            onclick="showScreen('homeScreen')">
-
-        ← BACK
-
-    </button>
-
-</section>
-
-
-
-<!-- =====================================================
-     DIFFICULTY SCREEN
-===================================================== -->
-
-<section id="difficultyScreen" class="screen">
-
-    <div class="section-header">
-
-        <p class="small-title">
-            SELECT DIFFICULTY
-        </p>
-
-        <h2>
-            HOW HARD IS YOUR QUEST?
-        </h2>
-
-    </div>
-
-
-    <div class="difficulty-grid">
-
-
-        <button class="difficulty-card easy"
-                onclick="selectDifficulty('easy')">
-
-            <div class="difficulty-icon">
-                🌱
-            </div>
-
-            <h3>EASY</h3>
-
-            <p>
-                100 HP
-            </p>
-
-            <span>
-                Beginner
-            </span>
-
-        </button>
-
-
-        <button class="difficulty-card medium"
-                onclick="selectDifficulty('medium')">
-
-            <div class="difficulty-icon">
-                ⚡
-            </div>
-
-            <h3>MEDIUM</h3>
-
-            <p>
-                200 HP
-            </p>
-
-            <span>
-                Intermediate
-            </span>
-
-        </button>
-
-
-        <button class="difficulty-card hard"
-                onclick="selectDifficulty('hard')">
-
-            <div class="difficulty-icon">
-                ☠
-            </div>
-
-            <h3>HARD</h3>
-
-            <p>
-                300 HP
-            </p>
-
-            <span>
-                Expert
-            </span>
-
-        </button>
-
-    </div>
-
-
-    <button class="back-button"
-            onclick="showScreen('modeScreen')">
-
-        ← BACK
-
-    </button>
-
-</section>
-
-
-
-<!-- =====================================================
-     GAME SCREEN
-===================================================== -->
-
-<section id="gameScreen" class="screen">
-
-    <div class="game-top">
-
-        <div class="game-stat">
-
-            <span id="timer">
-                TIME: 60
-            </span>
-
-        </div>
-
-        <div class="game-stat">
-
-            <span id="questionCounter">
-                QUESTION
-            </span>
-
-        </div>
-
-    </div>
-
-
-    <!-- BOSS -->
-
-    <div class="boss-area">
-
-        <div class="boss-label">
-            COMPUTER BOSS
-        </div>
-
-        <div class="boss-character">
-            🤖
-        </div>
-
-        <div class="boss-hp-container">
-
-            <div class="boss-hp-label">
-
-                <span>
-                    BOSS HP
-                </span>
-
-                <span id="bossHPText">
-                    100 / 100 HP
-                </span>
-
-            </div>
-
-            <div class="boss-hp-background">
-
-                <div id="bossHP"
-                     class="boss-hp-bar">
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- QUESTION -->
-
-    <div class="question-card">
-
-        <div class="question-label">
-            COMPUTER LITERACY
-        </div>
-
-        <h2 id="question">
-            Loading question...
-        </h2>
-
-    </div>
-
-
-    <!-- ANSWERS -->
-
-    <div id="answers"
-         class="answers-container">
-
-    </div>
-
-
-    <!-- FEEDBACK -->
-
-    <div id="resultMessage"
-         class="result-message">
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     SUCCESS SCREEN
-===================================================== -->
-
-<section id="successScreen"
-         class="screen result-screen">
-
-    <div class="result-box success-box">
-
-        <div class="result-icon">
-            🏆
-        </div>
-
-        <p class="small-title">
-            MISSION COMPLETE
-        </p>
-
-        <h1>
-            MISSION SUCCESSFUL!
-        </h1>
-
-        <p>
-            You completed the Computer Literacy quest.
-        </p>
-
-        <h2 id="finalScore">
-            SCORE: 0
-        </h2>
-
-
-        <div class="result-buttons">
-
-            <button class="start-button"
-                    onclick="retryGame()">
-
-                PLAY AGAIN
-
+            <button class="room unlocked" data-room="computer">
+                <span class="room-icon">🖥️</span>
+                <span>Computer Cavern</span>
+                <small>Computer Basics</small>
             </button>
 
-            <button class="back-button"
-                    onclick="goHome()">
+            <button class="room locked" data-room="keyboard">
+                <span class="room-icon">⌨️</span>
+                <span>Keyboard Castle</span>
+                <small>Locked</small>
+            </button>
 
-                HOME
+            <button class="room locked" data-room="files">
+                <span class="room-icon">📁</span>
+                <span>File Forest</span>
+                <small>Locked</small>
+            </button>
 
+            <button class="room locked" data-room="internet">
+                <span class="room-icon">🌐</span>
+                <span>Internet Ruins</span>
+                <small>Locked</small>
+            </button>
+
+            <button class="room locked" data-room="security">
+                <span class="room-icon">🔐</span>
+                <span>Cyber Dungeon</span>
+                <small>Locked</small>
+            </button>
+
+            <button class="room locked" data-room="coding">
+                <span class="room-icon">💻</span>
+                <span>Coding Labyrinth</span>
+                <small>Locked</small>
+            </button>
+
+            <button class="room locked boss-room" data-room="boss">
+                <span class="room-icon">👑</span>
+                <span>Digital Overlord</span>
+                <small>FINAL BOSS</small>
             </button>
 
         </div>
-
-    </div>
-
-</section>
+    </section>
 
 
+    <!-- QUESTION MODAL -->
+    <div id="questionModal" class="modal hidden">
 
-<!-- =====================================================
-     FAILED SCREEN
-===================================================== -->
+        <div class="modal-content">
 
-<section id="failedScreen"
-         class="screen result-screen">
+            <button id="closeQuestion" class="close">✕</button>
 
-    <div class="result-box failed-box">
+            <div id="enemyArea">
+                <div id="enemyIcon">👾</div>
+                <h2 id="enemyName">Digital Enemy</h2>
 
-        <div class="result-icon">
-            💻
-        </div>
+                <div class="enemy-health">
+                    <div id="enemyHealthBar"></div>
+                </div>
 
-        <p class="small-title">
-            QUEST FAILED
-        </p>
+                <p id="enemyHealthText">50 / 50 HP</p>
+            </div>
 
-        <h1>
-            MISSION FAILED
-        </h1>
+            <div class="question-area">
 
-        <p>
-            Don't give up. Try the quest again!
-        </p>
+                <p id="questionNumber">Question 1</p>
 
-        <h2 id="failedScore">
-            SCORE: 0
-        </h2>
+                <h2 id="questionText">
+                    Question goes here
+                </h2>
 
+                <div id="answers"></div>
 
-        <div class="result-buttons">
+                <p id="feedback"></p>
 
-            <button class="start-button"
-                    onclick="retryGame()">
+                <button id="nextQuestion" class="next-btn">
+                    Next Question
+                </button>
 
-                RETRY
-
-            </button>
-
-            <button class="back-button"
-                    onclick="goHome()">
-
-                HOME
-
-            </button>
+            </div>
 
         </div>
 
     </div>
 
-</section>
 
-
-
-<!-- =====================================================
-     LEVEL UP POPUP
-===================================================== -->
-
-<div id="levelUpPopup"
-     class="level-up-popup">
-
-    <div>
-        ⭐ LEVEL UP! ⭐
+    <!-- MESSAGE -->
+    <div id="messageBox" class="message hidden">
+        <h2 id="messageTitle">Mission Complete!</h2>
+        <p id="messageText"></p>
+        <button id="messageButton">Continue</button>
     </div>
 
-    <span>
-        You reached a new level!
-    </span>
+</main>
 
-</div>
-
-
-
-<!-- =====================================================
-     LOGIN / SIGN UP MODAL
-===================================================== -->
-
-<div id="authModal"
-     class="auth-modal">
-
-    <div class="auth-box">
-
-
-        <button class="close-auth"
-                onclick="closeAuth()">
-
-            ×
-
-        </button>
-
-
-        <div class="auth-logo">
-            ⚡
-        </div>
-
-
-        <h2 id="authTitle">
-            WELCOME BACK
-        </h2>
-
-        <p id="authSubtitle">
-            Login to continue your TechnoQuest.
-        </p>
-
-
-        <!-- LOGIN -->
-
-        <form id="loginForm"
-              onsubmit="loginUser(event)">
-
-            <div class="input-group">
-
-                <label>
-                    USERNAME
-                </label>
-
-                <input id="loginUsername"
-                       type="text"
-                       placeholder="Enter username"
-                       required>
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label>
-                    PASSWORD
-                </label>
-
-                <input id="loginPassword"
-                       type="password"
-                       placeholder="Enter password"
-                       required>
-
-            </div>
-
-
-            <button class="auth-submit"
-                    type="submit">
-
-                LOGIN
-
-            </button>
-
-        </form>
-
-
-        <!-- SIGN UP -->
-
-        <form id="signupForm"
-              class="hidden"
-              onsubmit="signupUser(event)">
-
-            <div class="input-group">
-
-                <label>
-                    USERNAME
-                </label>
-
-                <input id="signupUsername"
-                       type="text"
-                       placeholder="Create username"
-                       required>
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label>
-                    PASSWORD
-                </label>
-
-                <input id="signupPassword"
-                       type="password"
-                       placeholder="Create password"
-                       required>
-
-            </div>
-
-
-            <div class="input-group">
-
-                <label>
-                    CONFIRM PASSWORD
-                </label>
-
-                <input id="signupConfirm"
-                       type="password"
-                       placeholder="Confirm password"
-                       required>
-
-            </div>
-
-
-            <button class="auth-submit"
-                    type="submit">
-
-                CREATE ACCOUNT
-
-            </button>
-
-        </form>
-
-
-        <div id="authMessage"
-             class="auth-message">
-
-        </div>
-
-
-        <div class="auth-switch">
-
-            <span id="switchText">
-                Don't have an account?
-            </span>
-
-            <button onclick="switchAuth()"
-                    id="switchButton">
-
-                SIGN UP
-
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- =====================================================
-     AUTH JAVASCRIPT
-===================================================== -->
-
-<script>
-
-let authMode = "login";
-
-
-function openAuth(mode) {
-
-    authMode = mode;
-
-    document
-        .getElementById("authModal")
-        .classList.add("show");
-
-    updateAuthMode();
-
-}
-
-
-function closeAuth() {
-
-    document
-        .getElementById("authModal")
-        .classList.remove("show");
-
-}
-
-
-function switchAuth() {
-
-    if (authMode === "login") {
-
-        authMode = "signup";
-
-    } else {
-
-        authMode = "login";
-
-    }
-
-    updateAuthMode();
-
-}
-
-
-function updateAuthMode() {
-
-    const loginForm =
-        document.getElementById("loginForm");
-
-    const signupForm =
-        document.getElementById("signupForm");
-
-    const title =
-        document.getElementById("authTitle");
-
-    const subtitle =
-        document.getElementById("authSubtitle");
-
-    const switchText =
-        document.getElementById("switchText");
-
-    const switchButton =
-        document.getElementById("switchButton");
-
-
-    document.getElementById("authMessage").textContent = "";
-
-
-    if (authMode === "login") {
-
-        loginForm.classList.remove("hidden");
-
-        signupForm.classList.add("hidden");
-
-        title.textContent =
-            "WELCOME BACK";
-
-        subtitle.textContent =
-            "Login to continue your TechnoQuest.";
-
-        switchText.textContent =
-            "Don't have an account?";
-
-        switchButton.textContent =
-            "SIGN UP";
-
-    } else {
-
-        loginForm.classList.add("hidden");
-
-        signupForm.classList.remove("hidden");
-
-        title.textContent =
-            "CREATE ACCOUNT";
-
-        subtitle.textContent =
-            "Join TechnoQuest and start your journey.";
-
-        switchText.textContent =
-            "Already have an account?";
-
-        switchButton.textContent =
-            "LOGIN";
-
-    }
-
-}
-
-
-function signupUser(event) {
-
-    event.preventDefault();
-
-
-    const username =
-        document
-        .getElementById("signupUsername")
-        .value
-        .trim();
-
-    const password =
-        document
-        .getElementById("signupPassword")
-        .value;
-
-    const confirm =
-        document
-        .getElementById("signupConfirm")
-        .value;
-
-
-    const message =
-        document.getElementById("authMessage");
-
-
-    if (password !== confirm) {
-
-        message.textContent =
-            "Passwords do not match.";
-
-        message.className =
-            "auth-message error";
-
-        return;
-    }
-
-
-    localStorage.setItem(
-        "technoquestUser",
-        username
-    );
-
-    localStorage.setItem(
-        "technoquestPassword",
-        password
-    );
-
-
-    message.textContent =
-        "Account created! You can now login.";
-
-    message.className =
-        "auth-message success";
-
-
-    setTimeout(() => {
-
-        authMode = "login";
-
-        updateAuthMode();
-
-        document.getElementById("loginUsername").value =
-            username;
-
-    }, 1000);
-
-}
-
-
-function loginUser(event) {
-
-    event.preventDefault();
-
-
-    const username =
-        document
-        .getElementById("loginUsername")
-        .value
-        .trim();
-
-    const password =
-        document
-        .getElementById("loginPassword")
-        .value;
-
-
-    const savedUsername =
-        localStorage.getItem(
-            "technoquestUser"
-        );
-
-    const savedPassword =
-        localStorage.getItem(
-            "technoquestPassword"
-        );
-
-
-    const message =
-        document.getElementById("authMessage");
-
-
-    if (
-        username === savedUsername &&
-        password === savedPassword
-    ) {
-
-        message.textContent =
-            "Login successful! Welcome to TechnoQuest.";
-
-        message.className =
-            "auth-message success";
-
-
-        setTimeout(() => {
-
-            closeAuth();
-
-        }, 1000);
-
-    } else {
-
-        message.textContent =
-            "Incorrect username or password.";
-
-        message.className =
-            "auth-message error";
-
-    }
-
-}
-
-
-// Close modal when clicking outside
-
-document
-    .getElementById("authModal")
-    .addEventListener("click", function(event) {
-
-        if (event.target === this) {
-
-            closeAuth();
-
-        }
-
-    });
-
-</script>
-
-<!-- =====================================================
-     SOUND EFFECTS
-===================================================== -->
-
-<audio id="clickSound" src="sounds/click.mp3"></audio>
-<audio id="correctSound" src="sounds/correct.mp3"></audio>
-<audio id="wrongSound" src="sounds/wrong.mp3"></audio>
-<audio id="damageSound" src="sounds/damage.mp3"></audio>
-<audio id="successSound" src="sounds/success.mp3"></audio>
-<audio id="failedSound" src="sounds/failed.mp3"></audio>
-<audio id="levelSound" src="sounds/levelup.mp3"></audio>
-<audio id="loginSound" src="sounds/login.mp3"></audio>
-
-
-<!-- =====================================================
-     THEME SELECTOR
-===================================================== -->
-
-<div class="theme-panel">
-
-    <button class="theme-button"
-            onclick="toggleThemes()">
-
-        🎨 THEME
-
-    </button>
-
-    <div id="themeMenu"
-         class="theme-menu">
-
-        <button onclick="setTheme('cyber')">
-            ⚡ Cyber Neon
-        </button>
-
-        <button onclick="setTheme('inferno')">
-            🔥 Inferno
-        </button>
-
-        <button onclick="setTheme('galaxy')">
-            🌌 Galaxy
-        </button>
-
-        <button onclick="setTheme('matrix')">
-            🟢 Matrix
-        </button>
-
-        <button onclick="setTheme('ice')">
-            ❄️ Ice Core
-        </button>
-
-    </div>
-
-</div>
-
-<!-- YOUR GAME JAVASCRIPT -->
-
-<script src="script.js?v=2"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
